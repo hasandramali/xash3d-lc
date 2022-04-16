@@ -35,7 +35,7 @@ LOCAL_SRC_FILES := aflock.cpp agrunt.cpp schedule.cpp airtank.cpp \
 		nodes.cpp observer.cpp osprey.cpp pathcorner.cpp plane.cpp plats.cpp player.cpp playermonster.cpp \
 		python.cpp rat.cpp roach.cpp rpg.cpp satchel.cpp scientist.cpp scripted.cpp shotgun.cpp \
 		singleplay_gamerules.cpp skill.cpp sound.cpp soundent.cpp spectator.cpp squadmonster.cpp \
-		squeakgrenade.cpp stats.cpp subs.cpp talkmonster.cpp teamplay_gamerules.cpp tempmonster.cpp \
+		squeakgrenade.cpp stats.cpp subs.cpp talkmonster.cpp tempmonster.cpp \
 		tentacle.cpp triggers.cpp tripmine.cpp turret.cpp util.cpp weapons.cpp world.cpp xen.cpp \
 		zombie.cpp glock.cpp \
 	   ../pm_shared/pm_debug.c ../pm_shared/pm_math.c ../pm_shared/pm_shared.c

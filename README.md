@@ -13,13 +13,13 @@ X: Semiclip, Oyuncular birbirilerinin içinden geçebilir
 
 X: Tripmine fix
 
-X: Maplere özel cfg execleme sistemi
-
 Extra Yapılması gerekenler(zorunlu değil):
 
 X: Checkpoint sistemi
 
 X: Medkit
+
+X: Maplere özel cfg execleme sistemi
 
 X: Opposing Force Silahları ve NPC'leri
 

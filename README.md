@@ -7,7 +7,7 @@ Yapılması gerekenler:
 
 √: Weapon Respawn every seconds
 
-X: Oyuncular Birbirilerini öldüremez
+√: Oyuncular Birbirilerini öldüremez
 
 X: Semiclip, Oyuncular birbirilerinin içinden geçebilir
 

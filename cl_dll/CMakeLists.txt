@@ -20,11 +20,16 @@
 # SOFTWARE.
 #
 
-cmake_minimum_required(VERSION 2.6.0)
+cmake_minimum_required(VERSION 2.8.12)
 project (CLDLL)
 
 set (CLDLL_LIBRARY client)
 
+include(CheckIncludeFile)
+check_include_file("tgmath.h" HAVE_TGMATH_H)
+if(HAVE_TGMATH_H)
+	add_definitions(-DHAVE_TGMATH_H)
+endif()
 
 add_definitions(-DCLIENT_WEAPONS -DCLIENT_DLL)
 
@@ -40,11 +45,6 @@ if(NOT MSVC)
 else()
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE)
 endif()
-
-if (GOLDSOURCE_SUPPORT)
-	add_definitions(-DGOLDSOURCE_SUPPORT)
-endif()
-
 
 set (CLDLL_SOURCES
 	../dlls/crossbow.cpp
@@ -111,21 +111,16 @@ set (CLDLL_SOURCES
 	tri.cpp
 	util.cpp
 	view.cpp
+	MOTD.cpp
 	scoreboard.cpp
-	MOTD.cpp)
+)
 
-include_directories (. hl/ ../dlls ../dlls/wpn_shared ../common ../engine ../pm_shared ../game_shared ../public ../utils/false_vgui/include)
-
-if(USE_VOICEMGR)
-	#set(CLDLL_SOURCES
-	#	${CLDLL_SOURCES}
-	#	../game_shared/voice_banmgr.cpp
-	#	../game_shared/voice_status.cpp)
-endif()
+include_directories (. hl/ ../dlls ../dlls/wpn_shared ../common ../engine ../pm_shared ../game_shared ../public)
 
 add_library (${CLDLL_LIBRARY} SHARED ${CLDLL_SOURCES})
-if (GOLDSOURCE_SUPPORT)
-	target_link_libraries( ${CLDLL_LIBRARY} ${CMAKE_DL_LIBS} )
+
+if(WIN32)
+	target_link_libraries( ${CLDLL_LIBRARY} user32.lib )
 endif()
 
 set_target_properties (${CLDLL_LIBRARY} PROPERTIES
@@ -133,13 +128,13 @@ set_target_properties (${CLDLL_LIBRARY} PROPERTIES
 
 if(APPLE OR WIN32 OR ${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 	set(CLDLL_NAME "client")
-	if(64BIT)
-		set(CLDLL_NAME "client64")
-	endif()
-
 	set_target_properties(${CLDLL_LIBRARY} PROPERTIES
 		OUTPUT_NAME ${CLDLL_NAME}
 		PREFIX "")
+endif()
+
+if(MSVC)
+	set_property(TARGET ${CLDLL_LIBRARY} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
 
 install( TARGETS ${CLDLL_LIBRARY}

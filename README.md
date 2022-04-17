@@ -9,7 +9,7 @@ Yapılması gerekenler:
 
 √: Oyuncular Birbirilerini öldüremez
 
-X: Semiclip, Oyuncular birbirilerinin içinden geçebilir
+√: Semiclip, Oyuncular birbirilerinin içinden geçebilir
 
 X: Tripmine fix
 

@@ -772,7 +772,7 @@ int CHalfLifeRules::AmmoShouldRespawn( CBasePlayerAmmo *pAmmo )
 //=========================================================
 float CHalfLifeRules::FlAmmoRespawnTime( CBasePlayerAmmo *pAmmo )
 {
-	return gpGlobals->time + 15;
+	return gpGlobals->time + 1;
 }
 
 //=========================================================

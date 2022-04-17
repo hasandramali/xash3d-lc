@@ -1628,7 +1628,7 @@ void CBasePlayer::PlayerUse( void )
 		return;
 
 	// Was use pressed or released?
-	if( !( ( pev->button | m_afButtonPressed | m_afButtonReleased) & IN_USE ) )
+	if( !( ( pev->button | m_afButtonPressed | m_afButtonReleased) & IN_USE ) || (pev->flags & FL_SPECTATOR) )
 		return;
 
 	// Hit Use on a train?

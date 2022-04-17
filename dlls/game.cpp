@@ -22,6 +22,7 @@ cvar_t displaysoundlist = {"displaysoundlist","0"};
 // multiplayer server rules
 cvar_t fragsleft	= { "mp_fragsleft","0", FCVAR_SERVER | FCVAR_UNLOGGED };	  // Don't spam console/log files/users with this changing
 cvar_t timeleft		= { "mp_timeleft","0" , FCVAR_SERVER | FCVAR_UNLOGGED };	  // "      "
+cvar_t semiclip		= { "mp_semiclip","0", FCVAR_SERVER };
 
 // multiplayer server rules
 cvar_t teamplay		= { "mp_teamplay","1", FCVAR_SERVER };
@@ -468,6 +469,8 @@ void GameDLLInit( void )
 	CVAR_REGISTER( &fragsleft );
 	CVAR_REGISTER( &timeleft );
 
+	CVAR_REGISTER( &semiclip );
+
 	CVAR_REGISTER( &friendlyfire );
 	CVAR_REGISTER( &falldamage );
 	CVAR_REGISTER( &weaponstay );
@@ -865,3 +868,12 @@ void GameDLLInit( void )
 	SERVER_COMMAND( "exec skill.cfg\n" );
 }
 
+extern "C"
+{
+	int IsCoopPlayer(int index)
+	{
+		if( semiclip.value && index >= 1 && index <= gpGlobals->maxClients+1 )
+			return TRUE;
+		return FALSE;
+	}
+}

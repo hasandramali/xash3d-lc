@@ -1034,6 +1034,11 @@ BOOL CHalfLifeMultiplay::IsAllowedToSpawn( CBaseEntity *pEntity )
 //=========================================================
 int CHalfLifeMultiplay::AmmoShouldRespawn( CBasePlayerAmmo *pAmmo )
 {
+	if( pAmmo->pev->spawnflags & SF_NORESPAWN )
+	{
+		return GR_AMMO_RESPAWN_NO;
+	}
+
 	return GR_AMMO_RESPAWN_YES;
 }
 

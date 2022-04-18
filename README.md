@@ -3,25 +3,24 @@ Xash3D SCo-op Mod For Android
 
 Yapılması gerekenler:
 
-√: Dost NPC'ler oyuncuya ne olursa olsun sinirlenmez veya korkmaz
+√: no angry NPC's
 
 √: Weapon stay
 
-√: Oyuncular Birbirilerini öldüremez
+√: No Friendly Fire (Players)
 
-√: Semiclip, Oyuncular birbirilerinin içinden geçebilir
+√: Semiclip
 
 X: Tripmine fix
 
 Extra Yapılması gerekenler(zorunlu değil):
 
-X: Checkpoint sistemi
+X: Checkpoint system
 
 X: Medkit
 
-X: Maplere özel cfg execleme sistemi
+X: mapname.cfg system
 
-X: Opposing Force Silahları ve NPC'leri
+X: Opposing Force Weapons And NPC's
 
-X: SOHL12'den SOHL18 sdk'sına geçiş:
-https://www.moddb.com/mods/spirit-of-half-life/downloads/sohl-v18-with-source-code-compatible-with-vs2010
+X: Upgrade SOHL12 to SOHL18

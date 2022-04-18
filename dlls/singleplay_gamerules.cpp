@@ -765,7 +765,12 @@ void CHalfLifeRules::PlayerGotAmmo( CBasePlayer *pPlayer, char *szName, int iCou
 //=========================================================
 int CHalfLifeRules::AmmoShouldRespawn( CBasePlayerAmmo *pAmmo )
 {
-		return GR_AMMO_RESPAWN_YES;
+	if( pAmmo->pev->spawnflags & SF_NORESPAWN )
+	{
+		return GR_AMMO_RESPAWN_NO;
+	}
+
+	return GR_AMMO_RESPAWN_YES;
 }
 
 //=========================================================

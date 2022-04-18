@@ -5,7 +5,7 @@ Yapılması gerekenler:
 
 √: Dost NPC'ler oyuncuya ne olursa olsun sinirlenmez veya korkmaz
 
-√: Weapon Respawn every seconds
+√: Weapon stay
 
 √: Oyuncular Birbirilerini öldüremez
 

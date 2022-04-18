@@ -1,5 +1,5 @@
 # xash3d-schl
-Xash3D SCo-op Mod For Android
+Xash3D SCo-op is Multiplayer Story mkd
 
 Yapılması gerekenler:
 

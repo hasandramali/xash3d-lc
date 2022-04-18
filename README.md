@@ -1,5 +1,5 @@
 # xash3d-schl
-Xash3D SCo-op is Multiplayer Story mkd
+Xash3D SCo-op is Multiplayer Story Mod Like Sven Co-op
 
 Yapılması gerekenler:
 

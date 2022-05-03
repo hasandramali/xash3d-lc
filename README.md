@@ -1,7 +1,7 @@
 # xash3d-schl
 Xash3D SCo-op is Multiplayer Story Mod Like Sven Co-op
 
-Yapılması gerekenler:
+Goals:
 
 √: no angry NPC's
 
@@ -13,7 +13,7 @@ Yapılması gerekenler:
 
 X: Tripmine fix
 
-Extra Yapılması gerekenler(zorunlu değil):
+Extras:
 
 X: Checkpoint system
 

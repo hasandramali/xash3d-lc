@@ -11,7 +11,7 @@ Goals:
 
 √: Semiclip
 
-X: Tripmine fix
+X: Auto Unstuck (4 sec delay)
 
 Extras:
 
@@ -19,8 +19,8 @@ X: Checkpoint system
 
 X: Medkit
 
-X: mapname.cfg system
+X: Map Prefix
 
 X: Opposing Force Weapons And NPC's
 
-X: Upgrade SOHL12 to SOHL18
+X: Upgrade SOHL12 to SOHL17

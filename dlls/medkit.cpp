@@ -64,8 +64,6 @@ void CMedkit::Precache( void )
 	PRECACHE_MODEL( "models/w_medkit.mdl" );
 	PRECACHE_MODEL( "models/p_medkit.mdl" );
 	PRECACHE_SOUND( "items/medshot4.wav" );
-
-	m_usMedkit = PRECACHE_EVENT( 1, "events/medkit.sc" );
 }
 
 int CMedkit::GetItemInfo( ItemInfo *p )
@@ -77,7 +75,7 @@ int CMedkit::GetItemInfo( ItemInfo *p )
 	p->iMaxAmmo2 = -1;
 	p->iMaxClip = WEAPON_NOCLIP;
 	p->iSlot = 0;
-	p->iPosition = 0;
+	p->iPosition = 1;
 	p->iId = WEAPON_MEDKIT;
 	p->iWeight = MEDKIT_WEIGHT;
 	return 1;
@@ -198,12 +196,6 @@ int CMedkit::DoHeal( int fFirst )
 		}
 	}
 #endif
-	if( fFirst )
-	{
-		PLAYBACK_EVENT_FULL( FEV_NOTHOST, m_pPlayer->edict(), m_usMedkit,
-		0.0, (float *)&g_vecZero, (float *)&g_vecZero, 0, 0, 0,
-		0, 0, 0 );
-	}
 
 	if( tr.flFraction >= 1.0 )
 	{

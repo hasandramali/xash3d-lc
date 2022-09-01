@@ -559,8 +559,6 @@ public:
 		return FALSE;
 #endif
 	}
-private:
-	unsigned short m_usMedkit;
 };
 
 class CPython : public CBasePlayerWeapon

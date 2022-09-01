@@ -288,6 +288,7 @@ void CGameRules::RefreshSkillData ( void )
 	gSkillData.plrDmgHornet = 7;
 
 	// HEALTH/CHARGE
+	gSkillData.medkitCapacity = GetSkillCvar ( "sk_medkit" );
 	gSkillData.suitchargerCapacity = GetSkillCvar( "sk_suitcharger" );
 	gSkillData.batteryCapacity = GetSkillCvar( "sk_battery" );
 	gSkillData.healthchargerCapacity = GetSkillCvar ( "sk_healthcharger" );

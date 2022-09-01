@@ -101,6 +101,7 @@ set (SVDLL_SOURCES
 	lights.cpp
 	locus.cpp
 	maprules.cpp
+	medkit.cpp
 	monstermaker.cpp
 	monsters.cpp
 	monsterstate.cpp

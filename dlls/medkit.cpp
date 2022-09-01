@@ -97,7 +97,7 @@ int CMedkit::AddToPlayer( CBasePlayer *pPlayer )
 
 BOOL CMedkit::Deploy()
 {
-	return DefaultDeploy( "models/v_medkit.mdl", "models/p_medkit.mdl", MEDKIT_DRAW, "medkit" );
+	return DefaultDeploy( "models/v_medkit.mdl", "models/p_medkit.mdl", MEDKIT_DRAW, "trip" );
 }
 
 void CMedkit::Holster( int skiplocal /* = 0 */ )

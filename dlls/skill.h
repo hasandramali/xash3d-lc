@@ -117,6 +117,7 @@ struct skilldata_t
 	float monDmgHornet;
 
 	// health/suit charge
+	float medkitCapacity;
 	float suitchargerCapacity;
 	float batteryCapacity;
 	float healthchargerCapacity;

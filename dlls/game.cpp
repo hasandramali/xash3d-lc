@@ -400,6 +400,10 @@ cvar_t	sk_healthkit1	= { "sk_healthkit1","0" };
 cvar_t	sk_healthkit2	= { "sk_healthkit2","0" };		
 cvar_t	sk_healthkit3	= { "sk_healthkit3","0" };		
 
+cvar_t	sk_medkit1	= { "sk_medkit1","10" };		
+cvar_t	sk_medkit2	= { "sk_medkit2","10" };		
+cvar_t	sk_medkit3	= { "sk_medkit3","10" };	
+
 cvar_t	sk_scientist_heal1	= { "sk_scientist_heal1","0" };	
 cvar_t	sk_scientist_heal2	= { "sk_scientist_heal2","0" };	
 cvar_t	sk_scientist_heal3	= { "sk_scientist_heal3","0" };	
@@ -816,6 +820,10 @@ void GameDLLInit( void )
 	CVAR_REGISTER( &sk_healthkit1 );
 	CVAR_REGISTER( &sk_healthkit2 );
 	CVAR_REGISTER( &sk_healthkit3 );
+
+	CVAR_REGISTER( &sk_medkit1 );
+	CVAR_REGISTER( &sk_medkit2 );
+	CVAR_REGISTER( &sk_medkit3 );
 
 	CVAR_REGISTER( &sk_scientist_heal1 );
 	CVAR_REGISTER( &sk_scientist_heal2 );

@@ -78,6 +78,7 @@ public:
 #define WEAPON_TRIPMINE			13
 #define	WEAPON_SATCHEL			14
 #define	WEAPON_SNARK			15
+#define WEAPON_MEDKIT			16
 
 #define WEAPON_ALLWEAPONS		(~(1<<WEAPON_SUIT))
 
@@ -102,6 +103,7 @@ public:
 #define SNARK_WEIGHT		5
 #define SATCHEL_WEIGHT		-10
 #define TRIPMINE_WEIGHT		-10
+#define MEDKIT_WEIGHT		0
 
 // weapon clip/carry ammo capacities
 #define URANIUM_MAX_CARRY		100
@@ -528,6 +530,39 @@ private:
 	unsigned short m_usCrowbar;
 };
 
+class CMedkit : public CBasePlayerWeapon
+{
+public:
+	void Spawn( void );
+	void Precache( void );
+	int iItemSlot( void ) { return 1; }
+	void EXPORT DoHeal_f( void );
+	void EXPORT Smack( void );
+	int GetItemInfo( ItemInfo *p );
+	int AddToPlayer( CBasePlayer *pPlayer );
+
+	void PrimaryAttack( void );
+	int DoHeal( int fFirst );
+	BOOL Deploy( void );
+	void Holster( int skiplocal = 0 );
+#ifdef MEDKIT_IDLE_ANIM
+	void WeaponIdle();
+#endif
+	int m_iSwing;
+	TraceResult m_trHit;
+
+	virtual BOOL UseDecrement( void )
+	{ 
+#if defined( CLIENT_WEAPONS )
+		return TRUE;
+#else
+		return FALSE;
+#endif
+	}
+private:
+	unsigned short m_usMedkit;
+};
+
 class CPython : public CBasePlayerWeapon
 {
 public:
@@ -949,6 +984,7 @@ public:
 #endif
 	}
 };
+
 
 class CTripmine : public CBasePlayerWeapon
 {

@@ -16,3 +16,6 @@ Xash3D SCo-op is Multiplayer Story Mod Like Sven Co-op
 - [ ] Map Prefix
 - [ ] Opposing Force Weapons And NPC's
 - [ ] Upgrade SOHL12 to SOHL17
+
+Android project is here:
+https://github.com/hasandramali/xschl-android

@@ -428,7 +428,7 @@ void CBasePlayerItem::SetObjectCollisionBox( void )
 void CBasePlayerItem::FallInit( void )
 {
 	pev->movetype = MOVETYPE_TOSS;
-	pev->solid = SOLID_BBOX;
+	pev->solid = SOLID_TRIGGER;
 
 	UTIL_SetOrigin( this, pev->origin );
 	UTIL_SetSize( pev, Vector( 0, 0, 0 ), Vector( 0, 0, 0 ) );//pointsize until it lands on the ground.

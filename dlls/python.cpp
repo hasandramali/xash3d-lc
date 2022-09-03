@@ -108,7 +108,7 @@ BOOL CPython::Deploy()
 	}
 	else
 	{
-		pev->body = 0;
+		pev->body = 1;
 	}
 
 	return DefaultDeploy( "models/v_357.mdl", "models/p_357.mdl", PYTHON_DRAW, "python", UseDecrement(), pev->body );
@@ -130,15 +130,6 @@ void CPython::Holster( int skiplocal /* = 0 */ )
 
 void CPython::SecondaryAttack( void )
 {
-#ifdef CLIENT_DLL
-	if( !bIsMultiplayer() )
-#else
-	if( !g_pGameRules->IsMultiplayer() )
-#endif
-	{
-		return;
-	}
-
 	if( m_pPlayer->pev->fov != 0 )
 	{
 		m_fInZoom = FALSE;
@@ -222,11 +213,7 @@ void CPython::Reload( void )
 	}
 
 	int bUseScope = FALSE;
-#ifdef CLIENT_DLL
-	bUseScope = bIsMultiplayer();
-#else
-	bUseScope = g_pGameRules->IsMultiplayer();
-#endif
+
 	if( DefaultReload( PYTHON_MAX_CLIP, PYTHON_RELOAD, 2.0, bUseScope ) )
 	{
 		m_flSoundDelay = 1.5;
@@ -273,11 +260,7 @@ void CPython::WeaponIdle( void )
 	}
 	
 	int bUseScope = FALSE;
-#ifdef CLIENT_DLL
-	bUseScope = bIsMultiplayer();
-#else
-	bUseScope = g_pGameRules->IsMultiplayer();
-#endif
+
 	SendWeaponAnim( iAnim, UseDecrement() ? 1 : 0, bUseScope );
 }
 

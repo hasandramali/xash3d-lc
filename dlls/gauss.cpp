@@ -262,7 +262,7 @@ void CGauss::SecondaryAttack()
 			else
 			{
 				m_pPlayer->m_rgAmmo[m_iPrimaryAmmoType]--;
-				m_pPlayer->m_flNextAmmoBurn = UTIL_WeaponTimeBase() + 0.1;
+				m_pPlayer->m_flNextAmmoBurn = UTIL_WeaponTimeBase() + 0.3;
 			}
 		}
 
@@ -351,6 +351,12 @@ void CGauss::StartFire( void )
 		if( !m_fPrimaryFire )
 		{
 			m_pPlayer->pev->velocity = m_pPlayer->pev->velocity - gpGlobals->v_forward * flDamage * 5;
+		}
+
+		if( selfgauss.value )
+		{
+			// in deathmatch, gauss can pop you up into the air. Not in single play.
+			m_pPlayer->pev->velocity.z = flZVel;
 		}
 #endif
 		// player "shoot" animation

@@ -51,6 +51,7 @@ set (SVDLL_SOURCES
 	animating.cpp
 	animation.cpp
 	apache.cpp
+	BMOD_flyingcrowbar.cpp
 	barnacle.cpp
 	barney.cpp
 	bigmomma.cpp

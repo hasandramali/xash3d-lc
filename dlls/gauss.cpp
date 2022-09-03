@@ -346,10 +346,17 @@ void CGauss::StartFire( void )
 	{
 		//ALERT( at_console, "Time:%f Damage:%f\n", gpGlobals->time - m_pPlayer->m_flStartCharge, flDamage );
 #ifndef CLIENT_DLL
+		float flZVel = m_pPlayer->pev->velocity.z;
 
 		if( !m_fPrimaryFire )
 		{
 			m_pPlayer->pev->velocity = m_pPlayer->pev->velocity - gpGlobals->v_forward * flDamage * 5;
+		}
+
+		if( !g_pGameRules->IsMultiplayer() )
+		{
+			// in deathmatch, gauss can pop you up into the air. Not in single play.
+			m_pPlayer->pev->velocity.z = flZVel;
 		}
 #endif
 		// player "shoot" animation

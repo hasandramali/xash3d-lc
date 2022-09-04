@@ -48,7 +48,7 @@ void CFlyingCrowbar::Spawn()
 	// within the game.
 	pev->movetype = MOVETYPE_TOSS;
 	pev->solid = SOLID_BBOX;
-	pev->dmg = RANDOM_LONG( 80, 50 );
+	pev->dmg = RANDOM_LONG( 60, 50 );
 
 	// Use the world crowbar model.
 	SET_MODEL(ENT(pev), "models/w_crowbar.mdl");

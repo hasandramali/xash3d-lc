@@ -8,7 +8,7 @@ Xash3D SCo-op is Multiplayer Story Mod Like Sven Co-op
 - [x] Weapon stay
 - [x] No Friendly Fire (Players)
 - [x] Semiclip
-- [ ] Auto Unstuck (4 sec delay)
+- [ ] Auto Unstuck (dont ignore semiclip)
 
 # Extras
 - [x] Medkit

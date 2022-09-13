@@ -423,7 +423,11 @@ void CBarney::Spawn()
 		SET_MODEL( ENT( pev ), "models/barney.mdl" );
 	UTIL_SetSize( pev, VEC_HUMAN_HULL_MIN, VEC_HUMAN_HULL_MAX );
 
-	pev->solid = SOLID_SLIDEBOX;
+	if( FBitSet( pev->spawnflags ) )
+		pev->solid	= SOLID_NOT;
+	else
+		pev->solid	= SOLID_SLIDEBOX;
+
 	pev->movetype = MOVETYPE_STEP;
 	m_bloodColor = BLOOD_COLOR_RED;
 	if (pev->health == 0) //LRC

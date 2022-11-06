@@ -423,8 +423,8 @@ void CBarney::Spawn()
 		SET_MODEL( ENT( pev ), "models/barney.mdl" );
 	UTIL_SetSize( pev, VEC_HUMAN_HULL_MIN, VEC_HUMAN_HULL_MAX );
 
-	if( FBitSet( pev->spawnflags ) )
-		pev->solid	= SOLID_NOT;
+	if(pev->solid)
+		STRING(pev->solid);
 	else
 		pev->solid	= SOLID_SLIDEBOX;
 

@@ -424,9 +424,9 @@ void CBarney::Spawn()
 	UTIL_SetSize( pev, VEC_HUMAN_HULL_MIN, VEC_HUMAN_HULL_MAX );
 
 	if (pev->solid == 0)
-		pev->solid	= SOLID_NOT;
-	else
 		pev->solid	= SOLID_SLIDEBOX;
+	else
+		pev->solid	= SOLID_NOT;
 
 	pev->movetype = MOVETYPE_STEP;
 	m_bloodColor = BLOOD_COLOR_RED;

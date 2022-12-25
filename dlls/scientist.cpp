@@ -645,7 +645,11 @@ void CScientist::Spawn( void )
 		SET_MODEL( ENT( pev ), "models/scientist.mdl" );
 	UTIL_SetSize( pev, VEC_HUMAN_HULL_MIN, VEC_HUMAN_HULL_MAX );
 
-	pev->solid = SOLID_NOT;
+	if (pev->solid == 0)
+		pev->solid	= SOLID_SLIDEBOX;
+	else
+		pev->solid	= SOLID_NOT;
+
 	pev->movetype = MOVETYPE_STEP;
 	m_bloodColor = BLOOD_COLOR_RED;
 	if (pev->health == 0)

@@ -55,7 +55,7 @@ float CGauss::GetFullChargeTime( void )
 		return 1.5;
 	}
 
-	return 4;
+	return 1.5;
 }
 
 #ifdef CLIENT_DLL

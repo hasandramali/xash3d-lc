@@ -550,6 +550,11 @@ void ClientCommand( edict_t *pEntity )
 		}
 	}
 
+        else if( FStrEq(pcmd, "unstuck") )
+	{
+		UTIL_CleanSpawnPoint( pev->origin, 150 );
+	}
+
 	else if( FStrEq( pcmd, "drop" ) )
 	{
 		// player is dropping an item. 

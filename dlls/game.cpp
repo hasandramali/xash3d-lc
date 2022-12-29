@@ -16,7 +16,6 @@
 #include "eiface.h"
 #include "util.h"
 #include "game.h"
-#include "server.h"
 
 cvar_t displaysoundlist = {"displaysoundlist","0"};
 

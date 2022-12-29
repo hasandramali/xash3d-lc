@@ -8,12 +8,12 @@ Xash3D SCo-op is Multiplayer Story Mod Like Sven Co-op
 - [x] Weapon stay
 - [x] No Friendly Fire (Players)
 - [x] Semiclip
-- [ ] Auto Unstuck (dont ignore semiclip)
+- [x] Unstuck
+- [ ] Map Prefix (mapname.cfg)
 
 # Extras
 - [x] Medkit
 - [ ] Checkpoint system
-- [ ] Map Prefix
 - [ ] Opposing Force Weapons And NPC's
 - [ ] Upgrade SOHL12 to SOHL17
 

@@ -874,7 +874,7 @@ void GameDLLInit( void )
 
 	SERVER_COMMAND( "exec skill.cfg\n" );
         const char *mapname;
-        mapname = sv.name;
+        mapname = sv.levelname;
         SERVER_COMMAND( "exec %s\n", mapname );
 }
 

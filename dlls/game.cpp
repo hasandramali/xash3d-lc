@@ -873,6 +873,8 @@ void GameDLLInit( void )
 // END REGISTER CVARS FOR SKILL LEVEL STUFF
 
 	SERVER_COMMAND( "exec skill.cfg\n" );
+        const char *mapname = sv.name;
+        SERVER_COMMAND( "exec %s\n", mapname );
 }
 
 extern "C"

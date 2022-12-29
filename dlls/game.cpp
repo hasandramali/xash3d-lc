@@ -16,6 +16,7 @@
 #include "eiface.h"
 #include "util.h"
 #include "game.h"
+#include "server.h"
 
 cvar_t displaysoundlist = {"displaysoundlist","0"};
 
@@ -873,7 +874,8 @@ void GameDLLInit( void )
 // END REGISTER CVARS FOR SKILL LEVEL STUFF
 
 	SERVER_COMMAND( "exec skill.cfg\n" );
-        const char *mapname = sv.name;
+        const char *mapname;
+        mapname = sv.name;
         SERVER_COMMAND( "exec %s\n", mapname );
 }
 

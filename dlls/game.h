@@ -42,4 +42,9 @@ extern cvar_t allowmonsters;
 extern cvar_t *g_psv_gravity;
 extern cvar_t *g_psv_aim;
 extern cvar_t *g_footsteps;
+
+typedef struct
+{
+char		levelname[MAX_QPATH];
+}
 #endif // GAME_H

@@ -16,7 +16,6 @@
 #include "eiface.h"
 #include "util.h"
 #include "game.h"
-#include "../cl_dlls/hud_spectator.h"
 
 cvar_t displaysoundlist = {"displaysoundlist","0"};
 

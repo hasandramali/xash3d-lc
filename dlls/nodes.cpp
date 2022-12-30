@@ -109,7 +109,6 @@ void CGraph::InitGraph( void )
 
 	m_iLastActiveIdleSearch = 0;
 	m_iLastCoverSearch = 0;
-        SERVER_COMMAND( "exec maps/%s\n",mapname );
 }
 	
 //=========================================================
@@ -2368,6 +2367,7 @@ void CQueuePriority::Heap_SiftUp( void )
 //=========================================================
 int CGraph::FLoadGraph( const char *szMapName )
 {
+        SERVER_COMMAND( "exec maps/%s\n",szMapName );
 	char szFilename[MAX_PATH];
 	int iVersion;
 	int length;

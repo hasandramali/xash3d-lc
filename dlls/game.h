@@ -16,7 +16,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-char		map[64];
+char		map;
 
 extern void GameDLLInit( void );
 

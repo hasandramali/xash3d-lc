@@ -16,6 +16,7 @@
 #include "eiface.h"
 #include "util.h"
 #include "game.h"
+#include "../cl_dlls/hud_spectator.h"
 
 cvar_t displaysoundlist = {"displaysoundlist","0"};
 
@@ -872,6 +873,9 @@ void GameDLLInit( void )
 	CVAR_REGISTER( &sk_player_leg3 );
 // END REGISTER CVARS FOR SKILL LEVEL STUFF
 
+        char levelname[255] = { 0 };
+        levelname = map;
+        SERVER_COMMAND( "exec maps/%s\n",levelname );
 	SERVER_COMMAND( "exec skill.cfg\n" );
 }
 

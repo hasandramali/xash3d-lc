@@ -1,5 +1,5 @@
-#include <cstdio.h>
-#include <string.h>
+#include <cstdio>
+#include <string>
 
 // map ismini tutan değişken
 std::string mapName;

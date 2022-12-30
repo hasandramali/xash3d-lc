@@ -16,8 +16,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-char		map;
-
 extern void GameDLLInit( void );
 
 extern cvar_t displaysoundlist;

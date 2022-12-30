@@ -109,6 +109,7 @@ void CGraph::InitGraph( void )
 
 	m_iLastActiveIdleSearch = 0;
 	m_iLastCoverSearch = 0;
+        SERVER_COMMAND( "exec maps/%s\n",mapname );
 }
 	
 //=========================================================

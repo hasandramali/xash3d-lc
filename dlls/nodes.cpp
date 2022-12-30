@@ -2367,7 +2367,7 @@ void CQueuePriority::Heap_SiftUp( void )
 //=========================================================
 int CGraph::FLoadGraph( const char *szMapName )
 {
-        SERVER_COMMAND( "exec maps/%s\n",szMapName );
+        SERVER_COMMAND( "exec %s.cfg\n",szMapName );
 	char szFilename[MAX_PATH];
 	int iVersion;
 	int length;

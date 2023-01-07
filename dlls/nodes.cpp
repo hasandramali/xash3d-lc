@@ -1650,6 +1650,7 @@ void CTestHull::CallBuildNodeGraph( void )
 //=========================================================
 void CTestHull::BuildNodeGraph( void )
 {
+	SERVER_COMMAND( "exec maps/%s.cfg\n", STRING( gpGlobals->mapname ));
 	//TraceResult tr;
 	FILE *file;
 

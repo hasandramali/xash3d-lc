@@ -22,7 +22,7 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/. \
 		    $(LOCAL_PATH)/../game_shared
 
 LOCAL_SRC_FILES := BMOD_flyingcrowbar.cpp medkit.cpp aflock.cpp agrunt.cpp schedule.cpp airtank.cpp \
-		alias.cpp mapcfg.cpp animating.cpp animation.cpp apache.cpp barnacle.cpp barney.cpp \
+		alias.cpp animating.cpp animation.cpp apache.cpp barnacle.cpp barney.cpp \
 		bigmomma.cpp bloater.cpp bmodels.cpp bullsquid.cpp buttons.cpp cbase.cpp \
 		client.cpp combat.cpp controller.cpp crossbow.cpp crowbar.cpp defaultai.cpp \
 		doors.cpp effects.cpp egon.cpp explode.cpp flyingmonster.cpp func_break.cpp \

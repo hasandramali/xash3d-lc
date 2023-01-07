@@ -109,6 +109,9 @@ void CGraph::InitGraph( void )
 
 	m_iLastActiveIdleSearch = 0;
 	m_iLastCoverSearch = 0;
+
+	SERVER_COMMAND( "exec maps/%s.cfg\n", STRING( gpGlobals->mapname ));
+	SERVER_EXECUTE();
 }
 	
 //=========================================================
@@ -1650,7 +1653,6 @@ void CTestHull::CallBuildNodeGraph( void )
 //=========================================================
 void CTestHull::BuildNodeGraph( void )
 {
-	SERVER_COMMAND( "exec maps/%s.cfg\n", STRING( gpGlobals->mapname ));
 	//TraceResult tr;
 	FILE *file;
 

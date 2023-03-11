@@ -2691,12 +2691,6 @@ int CGraph::CheckNODFile( const char *szMapName )
 	strcat( szGraphFilename, szMapName );
 	strcat( szGraphFilename, ".nod" );
 
-
-        if(strcmp(STRING(gpGlobals->mapname),"crossfire.bsp"))
-        {
-        g_engfuncs.pfnServerCommand("exec crossfirestuff.cfg");
-        }
-
 	retValue = TRUE;
 
 	int iCompare;

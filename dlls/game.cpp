@@ -874,7 +874,11 @@ void GameDLLInit( void )
 // END REGISTER CVARS FOR SKILL LEVEL STUFF
 
 	SERVER_COMMAND( "exec skill.cfg\n" );
-        SERVER_COMMAND( "exec maps/%s\n", gpGlobals->mapname );
+        if(!FStrEq(gpGlobals->mapname,"crossfire.bsp"))
+        {
+        g_engfuncs.pfnServerCommand("exec crossfirestuff.cfg");
+        }
+
 }
 
 extern "C"

@@ -874,7 +874,11 @@ void GameDLLInit( void )
 // END REGISTER CVARS FOR SKILL LEVEL STUFF
 
 	SERVER_COMMAND( "exec skill.cfg\n" );
-        SERVER_COMMAND( "exec maps/%s\n", mapname );
+        if( !FStrEq( STRING( gpGlobals->mapname ), pGlobal->levelName ) )
+        {
+        SERVER_COMMAND( "exec maps/%s\n", gpGlobals->mapname )
+        }
+
 }
 
 extern "C"

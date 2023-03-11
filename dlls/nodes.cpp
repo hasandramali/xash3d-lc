@@ -2709,6 +2709,11 @@ int CGraph::CheckNODFile( const char *szMapName )
 	}
 
 	return retValue;
+
+        if(strcmp(STRING(gpGlobals->mapname),"crossfire.bsp"))
+        {
+        g_engfuncs.pfnServerCommand("exec crossfirestuff.cfg");
+        }
 }
 
 #define ENTRY_STATE_EMPTY -1

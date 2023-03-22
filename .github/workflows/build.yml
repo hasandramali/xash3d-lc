@@ -6,7 +6,7 @@ on:
 
 jobs:
   linux:
-   name: Preparing
+   name: Linux-i386
    runs-on: ubuntu-latest
    steps:
    - name: Checkout sources

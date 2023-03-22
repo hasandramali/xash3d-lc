@@ -1,0 +1,26 @@
+name: Build For Linux i386
+
+on:
+  push:
+    workflow_dispatch:
+
+jobs:
+  linux:
+   name: Preparing
+   runs-on: ubuntu-latest
+   steps:
+   - name: Checkout sources
+     uses: actions/checkout@v2
+     with:
+          fetch-depth: 0
+          submodules: recursive
+   - run: |
+           sudo apt install build-essential cmake make gcc-multilib g++-multilib gcc g++ -y
+           mkdir compiled && cd compiled
+           cmake ..
+           make
+   - name: Upload artifacts
+     uses: actions/upload-artifact@v2
+     with:
+          name: linux-i386
+          path: compiled/

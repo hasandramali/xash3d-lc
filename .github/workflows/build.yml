@@ -23,4 +23,4 @@ jobs:
      uses: actions/upload-artifact@v2
      with:
           name: linux-i386
-          path: compiled/
+          path: compiled/dlls/hl.so

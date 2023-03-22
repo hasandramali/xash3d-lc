@@ -10,12 +10,10 @@ Xash3D SCo-op is Multiplayer Story Mod Like Sven Co-op
 - [x] Semiclip
 - [x] Unstuck
 - [ ] Map Prefix (mapname.cfg)
-
-# Extras
 - [x] Medkit
 - [ ] Checkpoint system
 - [ ] Opposing Force Weapons And NPC's
-- [ ] Upgrade SOHL12 to SOHL17
+- [ ] Fixing Many Bugs
 
 Android project is here:
 https://github.com/hasandramali/xschl-android

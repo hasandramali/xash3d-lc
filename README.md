@@ -15,5 +15,8 @@ Xash3D SCo-op is Multiplayer Story Mod Like Sven Co-op
 - [ ] Opposing Force Weapons And NPC's
 - [ ] Fixing Many Bugs
 
-Android project is here:
-https://github.com/hasandramali/xschl-android
+Download For Linux:
+https://github.com/hasandramali/xschl-android/releases/download/v1.0.0/xash3d-schl.zip
+
+Android project:
+https://github.com/hasandramali/xschl-android/releases/tag/v1.0.0

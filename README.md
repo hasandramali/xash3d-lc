@@ -9,7 +9,7 @@ Xash3D SCo-op is Half-Life Multiplayer Story Mod Like Sven Co-op
 - [x] No Friendly Fire (Players)
 - [x] Semiclip
 - [x] Unstuck
-- [ ] Map Prefix (mapname.cfg)
+- [x] Map Prefix (mapname.cfg)
 - [x] Medkit
 - [ ] Checkpoint system
 - [ ] Opposing Force Weapons And NPC's

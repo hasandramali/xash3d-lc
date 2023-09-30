@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="launch_button">Запустить X-SCHL!</string>
+	<string name="cmd_args_text">Аргументы командной строки</string>
+	<string name="alert_install_dialog_text">не установлен!</string>
+	<string name="alert_update_dialog_text">Необходимо обновить Xash3D FWGS!\nТребуемая версия: 0.19.3 или новее.</string>
+</resources>

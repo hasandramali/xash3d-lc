@@ -1,0 +1,37 @@
+name: Building Android Proj
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  android:
+   name: Android
+   runs-on: ubuntu-latest
+   steps:
+   - name: Checkout sources
+     uses: actions/checkout@v3
+     with:
+          fetch-depth: 0
+          submodules: recursive
+   - uses: actions/checkout@v3
+   - uses: actions/setup-java@v3
+     with:
+      distribution: 'zulu' # See 'Supported distributions' for available options
+      java-version: '8'
+   - run: |
+           sudo apt update
+           sudo apt-get install gcc g++ clang g++-multilib gcc-multilib build-essential
+           cd android
+           wget https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip
+           unzip -qq android-ndk-r10e-linux-x86_64.zip
+           rm -rf android-ndk-r10e-linux-x86_64.zip
+           export ANDROID_NDK_HOME=android-ndk-r10e/
+           ./build.sh
+   - name: Upload artifacts
+     uses: actions/upload-artifact@v3
+     with:
+          name: kompiled
+          path: android/libs/armeabi-v7a/

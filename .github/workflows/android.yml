@@ -24,7 +24,9 @@ jobs:
    - run: |
            sudo apt update
            sudo apt-get install gcc g++ clang g++-multilib gcc-multilib build-essential
-           cd android
+           cd android/jni
+           ln -s ../../ ./xschl
+           cd ../
            wget https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip
            unzip -qq android-ndk-r10e-linux-x86_64.zip
            rm -rf android-ndk-r10e-linux-x86_64.zip

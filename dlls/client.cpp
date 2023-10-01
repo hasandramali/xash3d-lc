@@ -78,20 +78,6 @@ void set_suicide_frame( entvars_t *pev )
 	pev->nextthink = -1;
 }
 
-bool IsPlayerStuckInWall(CBaseEntity *pPlayer)
-{
-	if (pPlayer)
-	{
-		TraceResult tr;
-		UTIL_TraceLine(pPlayer->pev->origin, pPlayer->pev->origin + Vector(0, 0, 1), ignore_monsters, pPlayer->edict(), &tr);
-		// Check if the player is inside a solid object
-		if (tr.fStartSolid)
-		{
-			return true;
-		}
-	}
-	return false;
-}
 
 /*
 ===========
@@ -566,18 +552,7 @@ void ClientCommand( edict_t *pEntity )
 
         else if( FStrEq(pcmd, "unstuck") )
 	{
-		CBaseEntity *pPlayer = CBaseEntity::Instance( pEntity );
-		
-		// Check if the player is stuck in a wall
-		if (IsPlayerStuckInWall(pPlayer))
-		{
-			// If the player is stuck, unstick them without affecting nearby players
-			UTIL_CleanSpawnPoint(pPlayer->pev->origin, 150);
-		}
-		else
-		{
-			return;
-		}
+		UTIL_CleanSpawnPoint( pev->origin, 150 );
 	}
 
 	else if( FStrEq( pcmd, "drop" ) )
@@ -2018,4 +1993,4 @@ AllowLagCompensation
 int AllowLagCompensation( void )
 {
 	return 1;
-}
+}s

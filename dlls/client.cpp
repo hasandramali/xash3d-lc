@@ -78,6 +78,20 @@ void set_suicide_frame( entvars_t *pev )
 	pev->nextthink = -1;
 }
 
+bool IsPlayerStuckInWall(CBaseEntity *pPlayer)
+{
+	if (pPlayer)
+	{
+		TraceResult tr;
+		UTIL_TraceLine(pPlayer->pev->origin, pPlayer->pev->origin + Vector(0, 0, 1), ignore_monsters, pPlayer->edict(), &tr);
+		// Check if the player is inside a solid object
+		if (tr.fStartSolid)
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
 /*
 ===========

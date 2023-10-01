@@ -1860,7 +1860,7 @@ void CBaseMonster::Move( float flInterval )
 			DispatchBlocked( edict(), pBlocker->edict() );
 		}
 
-		if( pBlocker && m_moveWaitTime > 0 && pBlocker->IsMoving() && !pBlocker->IsPlayer() && ( gpGlobals->time-m_flMoveWaitFinished ) > 3.0 )
+		if( pBlocker && m_moveWaitTime > 0 && pBlocker->IsMoving() && ( gpGlobals->time-m_flMoveWaitFinished ) > 3.0 )
 		{
 			// Can we still move toward our target?
 			if( flDist < m_flGroundSpeed )

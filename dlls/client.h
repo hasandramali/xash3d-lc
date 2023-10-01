@@ -63,5 +63,19 @@ extern int InconsistentFile( const edict_t *player, const char *filename, char *
 
 extern int AllowLagCompensation( void );
 
-bool IsPlayerStuckInWall( CBaseEntity *pPlayer );
+bool IsPlayerStuckInWall(CBaseEntity *pPlayer)
+{
+  if (pPlayer)
+  {
+    TraceResult tr;
+    UTIL_TraceLine(pPlayer->pev->origin, pPlayer->pev->origin + Vector(0, 0, 1), ignore_monsters, pPlayer->edict(), &tr);
+    // Check if the player is inside a solid object
+    if (tr.fStartSolid)
+    {
+      return true;
+    }
+  }
+  return false;
+}
+
 #endif // CLIENT_H

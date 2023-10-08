@@ -316,7 +316,7 @@ void CGameRules::RefreshSkillData ( void )
 
 CGameRules *InstallGameRules( void )
 {
-	SERVER_COMMAND( UTIL_VarArgs( "exec %s.cfg\n", STRING( gpGlobals->mapname ) ) );
+	SERVER_COMMAND( UTIL_VarArgs( "exec maps/%s.cfg\n", STRING( gpGlobals->mapname ) ) );
 	SERVER_EXECUTE();
 
 	if( !gpGlobals->deathmatch )

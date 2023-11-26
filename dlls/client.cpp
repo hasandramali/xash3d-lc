@@ -556,8 +556,12 @@ void ClientCommand( edict_t *pEntity )
         {
 		if ( !m_flUnstuckCooldown || gpGlobals->time > m_flUnstuckCooldown )
 		{
-                        m_flUnstuckCooldown = gpGlobals->time + 6.0;
+                        m_flUnstuckCooldown = gpGlobals->time + 5.0;
                         UTIL_CleanSpawnPoint( pev->origin, 150 );
+		}
+		else
+		{
+			ClientPrint( pev, HUD_PRINTNOTIFY, "Wait 5 seconds for unstuck." );
 		}
 	}
 

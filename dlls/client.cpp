@@ -552,11 +552,8 @@ void ClientCommand( edict_t *pEntity )
 
         else if( FStrEq(pcmd, "unstuck") )
         {
-                if (!m_flUnstuckCooldown || gpGlobals->time > m_flUnstuckCooldown)
-                {
-                        m_flUnstuckCooldown = gpGlobals->time + 6.0;
-                        UTIL_CleanSpawnPoint( pev->origin, 150 );
-		}
+                m_flUnstuckCooldown = gpGlobals->time + 6.0;
+                UTIL_CleanSpawnPoint( pev->origin, 150 );
 	}
 
 

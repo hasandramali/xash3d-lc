@@ -60,6 +60,8 @@ extern int g_teamplay;
 extern cvar_t bhopcap;
 extern "C" int g_bhopcap;
 
+float m_flUnstuckCooldown = 0;
+
 void LinkUserMessages( void );
 
 /*

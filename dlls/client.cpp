@@ -1998,4 +1998,4 @@ AllowLagCompensation
 int AllowLagCompensation( void )
 {
 	return 1;
-}s
+}

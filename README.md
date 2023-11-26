@@ -17,6 +17,3 @@ Xash3D SCo-op is Half-Life Multiplayer Story Mod Like Sven Co-op
 
 Download For Linux:
 https://github.com/hasandramali/xschl-android/releases/download/v1.0.0/xash3d-schl.zip
-
-Android project:
-https://github.com/hasandramali/xschl-android/releases/tag/v1.0.0

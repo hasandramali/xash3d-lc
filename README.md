@@ -17,4 +17,4 @@ Half-Life story mod but CO-OP. (Like Sven CO-OP)
 
 ### Downloads
 
-[Download For Android](https://github.com/hasandramali/xschl-android/releases/download/v1.0.0/xash3d-schl.zip)
+[Download For Android](https://github.com/hasandramali/xash3d-schl/releases/tag/1.0/xash3d-schl.zip)

@@ -1,7 +1,6 @@
 name: Build For Linux i386
 
 on:
-  push:
     workflow_dispatch:
 
 jobs:

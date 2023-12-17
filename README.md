@@ -5,9 +5,10 @@ Xash3D based story mod but CO-OP.
 ![](https://img.shields.io/github/issues/hasandramali/xash3d-schl) ![](https://img.shields.io/github/forks/hasandramali/xash3d-schl) ![](https://img.shields.io/github/stars/hasandramali/xash3d-schl) ![](https://img.shields.io/github/license/hasandramali/xash3d-schl)
 
 ### Goals
-- [x] no angry NPC's
+- [x] Disable Angry NPC's
+- [x] Custom Models
 - [x] Weapon stay
-- [x] No Friendly Fire (Players)
+- [x] No Friendly Fire
 - [x] Semiclip
 - [x] Unstuck
 - [x] Map Prefix (mapname.cfg)

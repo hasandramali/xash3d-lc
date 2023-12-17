@@ -282,7 +282,7 @@ void CHalfLifeTeamplay::InitHUD( CBasePlayer *pPlayer )
 	}
 }
 
-void CHalfLifeTeamplay::ChangePlayerTeam( CBasePlayer *pPlayer, const char *pTeamName, BOOL bKill, BOOL bGib )
+void CHalfLifeTeamplay::ChangePlayerTeam( CBasePlayer *pPlayer, const char *pTeamName, BOOL bGib )
 {
 	int damageFlags = DMG_GENERIC;
 	int clientIndex = pPlayer->entindex();
@@ -294,19 +294,6 @@ void CHalfLifeTeamplay::ChangePlayerTeam( CBasePlayer *pPlayer, const char *pTea
 	else
 	{
 		damageFlags |= DMG_ALWAYSGIB;
-	}
-
-	if( bKill )
-	{
-		// kill the player,  remove a death,  and let them start on the new team
-		m_DisableDeathMessages = TRUE;
-		m_DisableDeathPenalty = TRUE;
-
-		entvars_t *pevWorld = VARS( INDEXENT( 0 ) );
-		pPlayer->TakeDamage( pevWorld, pevWorld, 900, damageFlags );
-
-		m_DisableDeathMessages = FALSE;
-		m_DisableDeathPenalty = FALSE;
 	}
 
 	// copy out the team name from the model

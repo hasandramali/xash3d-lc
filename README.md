@@ -1,6 +1,6 @@
 ### Half-Life: Legacy CO-OP <img align="right" width="128" height="128" src="https://github.com/hasandramali/xash3d-lc/assets/96012695/8cf10998-4d6b-4052-b511-2f74e470c027" alt="LC" />
 
-Xash3D based story mod but CO-OP.
+*Xash3D based story mod but CO-OP.*
 
 ![](https://img.shields.io/github/issues/hasandramali/xash3d-schl) ![](https://img.shields.io/github/forks/hasandramali/xash3d-schl) ![](https://img.shields.io/github/stars/hasandramali/xash3d-schl) ![](https://img.shields.io/github/license/hasandramali/xash3d-schl)
 

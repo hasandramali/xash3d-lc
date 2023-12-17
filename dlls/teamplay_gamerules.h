@@ -47,7 +47,7 @@ public:
 	virtual const char *GetIndexedTeamName( int teamIndex );
 	virtual BOOL IsValidTeam( const char *pTeamName );
 	const char *SetDefaultPlayerTeam( CBasePlayer *pPlayer );
-	virtual void ChangePlayerTeam( CBasePlayer *pPlayer, const char *pTeamName, BOOL bGib );
+	virtual void ChangePlayerTeam( CBasePlayer *pPlayer, const char *pTeamName, BOOL bKill, BOOL bGib );
 
 private:
 	void RecountTeams( bool bResendInfo = FALSE );

@@ -2710,8 +2710,11 @@ void PM_Jump( void )
 		return;		// in air, so no effect
 	}
 
-	// if( pmove->oldbuttons & IN_JUMP )
-	// 	return;		// don't pogo stick
+	if (!CVAR_GET_FLOAT("sv_autojump")) 
+	{
+           if (pmove->oldbuttons & IN_JUMP)
+           return;
+	}
 
 	// In the air now.
 	pmove->onground = -1;

@@ -1023,7 +1023,7 @@ int CBaseMonster::TakeDamage( entvars_t *pevInflictor, entvars_t *pevAttacker, f
 			if (!HasConditions(bits_COND_SPECIAL1))
 			{
 				ClearSchedule();
-				SetSchedule(SCHED_CHASE_ENEMY);
+				GetSchedule(SCHED_CHASE_ENEMY);
 				SetConditions(bits_COND_SPECIAL1);
 			}
 		}

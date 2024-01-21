@@ -21,13 +21,13 @@
 #include "pm_shared.h"
 #include "pm_movevars.h"
 #include "pm_debug.h"
+#include "game.h"
 //#include <stdio.h>  // NULL
 #include <math.h>   // sqrt
 #include <string.h> // strcpy
 #include <stdlib.h> // atoi
 #include <ctype.h>  // isspace
 
-extern cvar_t autojump;
 int g_bhopcap = 1;
 
 #ifdef CLIENT_DLL

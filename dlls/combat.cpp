@@ -1018,6 +1018,15 @@ int CBaseMonster::TakeDamage( entvars_t *pevInflictor, entvars_t *pevAttacker, f
 				SetConditions( bits_COND_HEAVY_DAMAGE );
 			}
 		}
+		if (pevAttacker->flags & FL_CLIENT)
+		{
+			if (!HasConditions(bits_COND_SPECIAL1))
+			{
+				ClearSchedule();
+				SetSchedule(SCHED_CHASE_ENEMY);
+				SetConditions(bits_COND_SPECIAL1);
+			}
+		}
 	}
 
 	return 1;
@@ -1043,7 +1052,7 @@ int CBaseMonster::DeadTakeDamage( entvars_t *pevInflictor, entvars_t *pevAttacke
 		}
 	}
 
-#if 0// turn this back on when the bounding box issues are resolved.
+#if 0 // turn this back on when the bounding box issues are resolved.
 
 	pev->flags &= ~FL_ONGROUND;
 	pev->origin.z += 1;

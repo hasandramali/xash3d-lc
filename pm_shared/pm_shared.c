@@ -27,6 +27,7 @@
 #include <stdlib.h> // atoi
 #include <ctype.h>  // isspace
 
+extern cvar_t autojump;
 int g_bhopcap = 1;
 
 #ifdef CLIENT_DLL

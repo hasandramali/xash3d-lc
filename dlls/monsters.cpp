@@ -1874,7 +1874,6 @@ void CBaseMonster::Move( float flInterval )
 
 		else if (pBlocker && pBlocker->IsPlayer())
 		{
-		        return; // If the blocker is a player, ignore them and continue moving
 		}
 		else 
 		{

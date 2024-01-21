@@ -2710,7 +2710,7 @@ void PM_Jump( void )
 		return;		// in air, so no effect
 	}
 
-	if (( autojump ) !== 1 && (pmove->oldbuttons & IN_JUMP))
+	if ( autojump.value != 1 && (pmove->oldbuttons & IN_JUMP))
 		return;
 
 	// In the air now.

@@ -22,7 +22,6 @@
 #include "pm_movevars.h"
 #include "pm_debug.h"
 #include "cvardef.h"
-#include "game.h"
 //#include <stdio.h>  // NULL
 #include <math.h>   // sqrt
 #include <string.h> // strcpy

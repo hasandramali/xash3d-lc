@@ -21,7 +21,6 @@
 #include "pm_shared.h"
 #include "pm_movevars.h"
 #include "pm_debug.h"
-#include "enginecallback.h"
 //#include <stdio.h>  // NULL
 #include <math.h>   // sqrt
 #include <string.h> // strcpy
@@ -2711,7 +2710,7 @@ void PM_Jump( void )
 		return;		// in air, so no effect
 	}
 
-	if (!(CVAR_GET_FLOAT("sv_autojump") == 1 && (pmove->oldbuttons & IN_JUMP)))
+	if (( autojump ) !== 1 && (pmove->oldbuttons & IN_JUMP))
 		return;
 
 	// In the air now.

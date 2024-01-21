@@ -21,7 +21,6 @@
 #include "pm_shared.h"
 #include "pm_movevars.h"
 #include "pm_debug.h"
-#include "game.h"
 //#include <stdio.h>  // NULL
 #include <math.h>   // sqrt
 #include <string.h> // strcpy
@@ -46,6 +45,7 @@ int PM_Ignore( physent_t *pe )
 }
 #endif
 
+extern cvar_t autojump;
 static int pm_shared_initialized = 0;
 
 #ifdef _MSC_VER

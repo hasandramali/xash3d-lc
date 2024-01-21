@@ -2710,7 +2710,7 @@ void PM_Jump( void )
 		return;		// in air, so no effect
 	}
 
-	if (!(mp_autojump.GetInt() == 1 && pmove->oldbuttons & IN_JUMP))
+	if (!(CVAR_GET_FLOAT("sv_autojump") == 1 && (pmove->oldbuttons & IN_JUMP)))
 		return;
 
 	// In the air now.

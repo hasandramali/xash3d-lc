@@ -1857,7 +1857,7 @@ void CBaseMonster::Move( float flInterval )
 		pBlocker = CBaseEntity::Instance( gpGlobals->trace_ent );
 		if( pBlocker )
 		{
-			if (!pBlocker->IsPlayer() && !IsEnemy(pBlocker))
+			if (!pBlocker->IsPlayer())
 			{
 				DispatchBlocked( edict(), pBlocker->edict() );
 			}

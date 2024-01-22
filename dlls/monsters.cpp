@@ -1871,10 +1871,6 @@ void CBaseMonster::Move( float flInterval )
 			}
 			// Ok, still enough room to take a step
 		}
-
-		else if (pBlocker && pBlocker->IsPlayer())
-		{
-		}
 		else 
 		{
 			// try to triangulate around whatever is in the way.

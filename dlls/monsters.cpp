@@ -1857,7 +1857,10 @@ void CBaseMonster::Move( float flInterval )
 		pBlocker = CBaseEntity::Instance( gpGlobals->trace_ent );
 		if( pBlocker )
 		{
-			DispatchBlocked( edict(), pBlocker->edict() );
+			if (!pBlocker->IsPlayer() && !IsEnemy(pBlocker))
+			{
+				DispatchBlocked( edict(), pBlocker->edict() );
+			}
 		}
 
 		if( pBlocker && m_moveWaitTime > 0 && pBlocker->IsMoving() && ( gpGlobals->time-m_flMoveWaitFinished ) > 3.0 )

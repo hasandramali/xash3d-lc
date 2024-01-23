@@ -1846,37 +1846,25 @@ void CBaseMonster::Move( float flInterval )
 	// If this fails, it should be because of some dynamic entity blocking this guy.
 	// We've already checked this path, so we should wait and time out if the entity doesn't move
 	flDist = 0;
-	if (CheckLocalMove(pev->origin, pev->origin + vecDir * flCheckDist, pTargetEnt, &flDist) != LOCALMOVE_VALID)
+        if (CheckLocalMove(pev->origin, pev->origin + vecDir * flCheckDist, pTargetEnt, &flDist) != LOCALMOVE_VALID)
 	{
-    CBaseEntity *pBlocker;
+		CBaseEntity *pBlocker = CBaseEntity::Instance(gpGlobals->trace_ent);
 
-    // Can't move, stop
-    Stop();
-
-    // Blocking entity is in global trace_ent
-    pBlocker = CBaseEntity::Instance(gpGlobals->trace_ent);
-    if (pBlocker)
-    {
-        if (!pBlocker->IsPlayer())
-        {
-            DispatchBlocked(edict(), pBlocker->edict());
-        }
-        else
-        {
-            // Push the player aside
-            Vector vecPushDir = vecDir * m_flGroundSpeed * 1.5; // Adjust the multiplier as needed
-            pBlocker->pev->velocity = vecPushDir;
-
-            // Optionally, you can add an effect or sound here
-            // UTIL_ScreenShake(pBlocker->pev->origin, 5.0, 1.0, 0.5, 1000.0, 2);
-
-            // Optionally, add a delay to prevent immediate re-collision
-            m_flMoveWaitFinished = gpGlobals->time + 1.0;
-
-            // Continue moving after pushing the player
-            return;
-        }
-    }
+		// Check if the blocker is a player
+		if (pBlocker && pBlocker->IsPlayer())
+		{
+			// Push the player aside
+			Vector vecPushDir = vecDir * m_flGroundSpeed * 1.5; // Adjust the multiplier as needed
+			pBlocker->pev->velocity = vecPushDir;
+			// Optionally, you can add an effect or sound here
+			// UTIL_ScreenShake(pBlocker->pev->origin, 5.0, 1.0, 0.5, 1000.0, 2); // Example screen shake
+			// Optionally, add a delay to prevent immediate re-collision
+			m_flMoveWaitFinished = gpGlobals->time + 1.0;
+			
+			// Continue moving after pushing the player
+			return;
+		}
+	}
 
     if (pBlocker && m_moveWaitTime > 0 && pBlocker->IsMoving() && (gpGlobals->time - m_flMoveWaitFinished) > 3.0)
     {

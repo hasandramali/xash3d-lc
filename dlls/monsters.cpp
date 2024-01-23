@@ -1877,6 +1877,8 @@ void CBaseMonster::Move( float flInterval )
 
 		else if (pBlocker && pBlocker->IsPlayer())
 		{
+			Vector vecPushDir = vecDir * m_flGroundSpeed * 1.5; // Adjust the multiplier as needed
+			pBlocker->pev->velocity = vecPushDir;
 		}
 
 		else 

@@ -1877,7 +1877,7 @@ void CBaseMonster::Move( float flInterval )
 
 		if (pBlocker && pBlocker->IsPlayer())
 		{
-			float flPushDistance = 5.0; // Adjust the distance as needed
+			float flPushDistance = 31; // Adjust the distance as needed
 			if ((pBlocker->pev->origin - pev->origin).Length2D() < flPushDistance)
 			{
 				// Push the player aside

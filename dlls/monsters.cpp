@@ -44,7 +44,7 @@ extern DLL_GLOBAL	short	g_sModelIndexLaserDot;// holds the index for the laser b
 
 extern CGraph WorldGraph;// the world node graph
 
-float flCollisionThreshold = 32.0; // LRC: Adjust the threshold as needed
+float flCollisionThreshold = 0.5; // LRC: Adjust the threshold as needed
 
 // Global Savedata for monster
 // UNDONE: Save schedule data?  Can this be done?  We may

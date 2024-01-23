@@ -1877,7 +1877,12 @@ void CBaseMonster::Move( float flInterval )
 
 		else if (pBlocker && pBlocker->IsPlayer())
 		{
-			Vector vecPushDir = vecDir * m_flGroundSpeed * 9.0; // Adjust the multiplier as needed
+			Vector vecToPlayer = pBlocker->pev->origin - pev->origin;
+			vecToPlayer.z = 0.0; // Ignore vertical distance
+			vecToPlayer = vecToPlayer.Normalize();
+
+			// Push the player aside
+			Vector vecPushDir = vecToPlayer * m_flGroundSpeed * 1.5; // Adjust the multiplier as needed
 			pBlocker->pev->velocity = vecPushDir;
 		}
 

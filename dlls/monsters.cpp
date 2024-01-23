@@ -1926,6 +1926,7 @@ void CBaseMonster::Move( float flInterval )
 			}
 		}
 	}
+	}
 
 	// close enough to the target, now advance to the next target. This is done before actually reaching
 	// the target so that we get a nice natural turn while moving.

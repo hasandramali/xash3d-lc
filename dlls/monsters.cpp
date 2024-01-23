@@ -44,6 +44,8 @@ extern DLL_GLOBAL	short	g_sModelIndexLaserDot;// holds the index for the laser b
 
 extern CGraph WorldGraph;// the world node graph
 
+float flCollisionThreshold = 32.0; // LRC: Adjust the threshold as needed
+
 // Global Savedata for monster
 // UNDONE: Save schedule data?  Can this be done?  We may
 // lose our enemy pointer or other data (goal ent, target, etc)
@@ -1846,10 +1848,12 @@ void CBaseMonster::Move( float flInterval )
 	// If this fails, it should be because of some dynamic entity blocking this guy.
 	// We've already checked this path, so we should wait and time out if the entity doesn't move
 	flDist = 0;
-	if( CheckLocalMove( pev->origin, pev->origin + vecDir * flCheckDist, pTargetEnt, &flDist ) != LOCALMOVE_VALID )
+        if (flWaypointDist > flCollisionThreshold)
+	{
+	// Perform the local move check only if the player is not too close
+	if (CheckLocalMove(pev->origin, pev->origin + vecDir * flCheckDist, pTargetEnt, &flDist) != LOCALMOVE_VALID)
 	{
 		CBaseEntity *pBlocker = CBaseEntity::Instance(gpGlobals->trace_ent);
-
 		// Can't move, stop
 		Stop();
 
@@ -1877,12 +1881,8 @@ void CBaseMonster::Move( float flInterval )
 
 		else if (pBlocker && pBlocker->IsPlayer())
 		{
-			Vector vecToPlayer = pBlocker->pev->origin - pev->origin;
-			vecToPlayer.z = 0.0; // Ignore vertical distance
-			vecToPlayer = vecToPlayer.Normalize();
-
 			// Push the player aside
-			Vector vecPushDir = vecToPlayer * m_flGroundSpeed * 1.5; // Adjust the multiplier as needed
+			Vector vecPushDir = vecToPlayer * m_flGroundSpeed * 25.0; // Adjust the multiplier as needed
 			pBlocker->pev->velocity = vecPushDir;
 		}
 

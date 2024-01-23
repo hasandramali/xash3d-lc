@@ -1848,7 +1848,7 @@ void CBaseMonster::Move( float flInterval )
 	flDist = 0;
 	if( CheckLocalMove( pev->origin, pev->origin + vecDir * flCheckDist, pTargetEnt, &flDist ) != LOCALMOVE_VALID )
 	{
-		CBaseEntity *pBlocker;
+		CBaseEntity *pBlocker = CBaseEntity::Instance(gpGlobals->trace_ent);
 
 		// Can't move, stop
 		Stop();

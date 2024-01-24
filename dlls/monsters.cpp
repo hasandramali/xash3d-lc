@@ -1877,8 +1877,7 @@ void CBaseMonster::Move( float flInterval )
 
 		if (pBlocker && pBlocker->IsPlayer())
 		{
-			if (m_bAllowPush)
-			{
+			
 			float flPushDistance = 34.0;
 			
 			if ((pBlocker->pev->origin - pev->origin).Length2D() < flPushDistance)
@@ -1895,7 +1894,6 @@ void CBaseMonster::Move( float flInterval )
 				
 				// Push the player
 				pBlocker->pev->velocity = vecPushDir;
-			}
 			}
 		}
 

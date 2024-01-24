@@ -32,7 +32,7 @@
 #include "nodes.h"
 #include "player.h"
 #include "gamerules.h"
-#include "BMOD_flyingcrowbar.h"
+#include "flyingcrowbar.h"
 
 LINK_ENTITY_TO_CLASS( flying_crowbar, CFlyingCrowbar );
 

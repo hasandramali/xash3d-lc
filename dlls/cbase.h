@@ -161,9 +161,6 @@ public:
 //
 class CBaseEntity 
 {
-private:
-        bool m_bAllowPush;
-
 public:
 	// Constructor.  Set engine to use C/C++ callback functions
 	// pointers to engine data
@@ -191,7 +188,7 @@ public:
 	Vector				m_vecSpawnOffset; // LRC- To fix things which (for example) MoveWith a door which Starts Open.
 	BOOL				m_activated;	// LRC- moved here from func_train. Signifies that an entity has already been
 										// activated. (and hence doesn't need reactivating.)
-
+        BOOL                            m_bAllowPush;
 	//LRC - decent mechanisms for setting think times!
 	// this should have been done a long time ago, but MoveWith finally forced me.
 	virtual void		SetNextThink( float delay ) { SetNextThink(delay, FALSE); }

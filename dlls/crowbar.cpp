@@ -21,7 +21,7 @@
 #include "nodes.h"
 #include "player.h"
 #include "gamerules.h"
-#include "BMOD_flyingcrowbar.h"
+#include "flyingcrowbar.h"
 
 #define	CROWBAR_BODYHIT_VOLUME 128
 #define	CROWBAR_WALLHIT_VOLUME 512

@@ -96,9 +96,4 @@ typedef float vec_t;				// needed before including progdefs.h
 #define Q_max(a,b)  (((a) > (b)) ? (a) : (b))
 #endif
 
-typedef struct entvars_s
-{
-    int m_bAllowPush;
-} entvars_t;
-
 #endif //EXTDLL_H

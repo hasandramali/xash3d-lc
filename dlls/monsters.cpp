@@ -1879,7 +1879,7 @@ void CBaseMonster::Move( float flInterval )
 		{
 			if (pev->fuser1 == 1)
 			{
-			float flPushDistance = 39.0;
+			float flPushDistance = 40.5;
 			
 			if ((pBlocker->pev->origin - pev->origin).Length2D() < flPushDistance)
 			{
@@ -1891,7 +1891,7 @@ void CBaseMonster::Move( float flInterval )
 				float flDot = DotProduct(vecToPlayer, vecPerpendicular);
 				Vector vecPushDir = (flDot > 0) ? vecPerpendicular : -vecPerpendicular;
 
-				vecPushDir = vecPushDir * m_flGroundSpeed * 9.0; // Adjust the multiplier as needed
+				vecPushDir = vecPushDir * m_flGroundSpeed * 13.5; // Adjust the multiplier as needed
 				
 				// Push the player
 				pBlocker->pev->velocity = vecPushDir;

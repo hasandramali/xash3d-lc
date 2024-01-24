@@ -516,7 +516,7 @@ void CBaseEntity::Activate( void )
 	m_activated = TRUE;
 	InitMoveWith();
 	PostSpawn();
-	m_bAllowPush;
+	m_bAllowPush = FALSE;
 }
 
 //LRC- called by activate() to support movewith

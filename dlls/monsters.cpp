@@ -44,6 +44,8 @@ extern DLL_GLOBAL	short	g_sModelIndexLaserDot;// holds the index for the laser b
 
 extern CGraph WorldGraph;// the world node graph
 
+m_bAllowPush = false;
+
 // Global Savedata for monster
 // UNDONE: Save schedule data?  Can this be done?  We may
 // lose our enemy pointer or other data (goal ent, target, etc)
@@ -1875,7 +1877,7 @@ void CBaseMonster::Move( float flInterval )
 			// Ok, still enough room to take a step
 		}
 
-		if (pBlocker && pBlocker->IsPlayer())
+		if (pBlocker && pBlocker->IsPlayer() && m_bAllowPush)
 		{
 			float flPushDistance = 35.0;
 			
@@ -2981,6 +2983,12 @@ void CBaseMonster::KeyValue( KeyValueData *pkvd )
 	else
 	{
 		CBaseToggle::KeyValue( pkvd );
+	}
+	
+	if (FStrEq(pszKeyName, "allowpush"))
+	{
+		m_bAllowPush = atoi(pszValue) != 0;
+		return true;
 	}
 }
 

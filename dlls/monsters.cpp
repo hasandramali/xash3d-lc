@@ -1877,7 +1877,7 @@ void CBaseMonster::Move( float flInterval )
 
 		if (pBlocker && pBlocker->IsPlayer())
 		{
-			if (pev->iuser1 == 1)
+			if (pev->fuser1 == 1)
 			{
 			float flPushDistance = 35.0;
 			

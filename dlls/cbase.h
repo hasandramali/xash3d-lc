@@ -161,6 +161,9 @@ public:
 //
 class CBaseEntity 
 {
+private:
+        bool m_bAllowPush;
+
 public:
 	// Constructor.  Set engine to use C/C++ callback functions
 	// pointers to engine data

@@ -36,6 +36,12 @@
 
 #define MONSTER_CUT_CORNER_DIST		8 // 8 means the monster's bounding box is contained without the box of the node in WC
 
+#ifdef _WIN32
+extern entvars_t g_MonsterEntValues[MAX_MONSTERS];
+#else
+entvars_t g_MonsterEntValues[MAX_MONSTERS];
+#endif
+
 Vector VecBModelOrigin( entvars_t *pevBModel );
 
 extern DLL_GLOBAL	BOOL	g_fDrawLines;

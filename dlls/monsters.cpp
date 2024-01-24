@@ -2049,8 +2049,6 @@ void CBaseMonster::MonsterInit( void )
 	SetThink( &CBaseMonster::MonsterInitThink );
 	SetNextThink( 0.1 );
 	SetUse( &CBaseMonster::MonsterUse );
-	
-	g_MonsterEntValues[entindex()].m_bAllowPush = pev->m_bAllowPush;
 }
 
 //=========================================================

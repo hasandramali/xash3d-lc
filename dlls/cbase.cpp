@@ -24,6 +24,8 @@
 #include	"movewith.h"
 #include	"skill.h"
 
+#define SF_PUSH_ALLOW (1 << 8)
+
 void EntvarsKeyvalue( entvars_t *pev, KeyValueData *pkvd );
 
 extern "C" void PM_Move ( struct playermove_s *ppmove, int server );

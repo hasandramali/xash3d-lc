@@ -24,8 +24,6 @@
 #include	"movewith.h"
 #include	"skill.h"
 
-#define SF_PUSH_ALLOW (1 << 8)
-
 void EntvarsKeyvalue( entvars_t *pev, KeyValueData *pkvd );
 
 extern "C" void PM_Move ( struct playermove_s *ppmove, int server );
@@ -518,11 +516,6 @@ void CBaseEntity::Activate( void )
 	m_activated = TRUE;
 	InitMoveWith();
 	PostSpawn();
-	
-	if (FBitSet(pev->spawnflags, SF_PUSH_ALLOW))
-	{
-		m_bAllowPush = TRUE;
-	}
 }
 
 //LRC- called by activate() to support movewith

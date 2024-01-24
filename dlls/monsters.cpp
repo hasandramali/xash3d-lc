@@ -1891,7 +1891,7 @@ void CBaseMonster::Move( float flInterval )
 				float flDot = DotProduct(vecToPlayer, vecPerpendicular);
 				Vector vecPushDir = (flDot > 0) ? vecPerpendicular : -vecPerpendicular;
 
-				vecPushDir = vecPushDir * m_flGroundSpeed * 13.5; // Adjust the multiplier as needed
+				vecPushDir = vecPushDir * m_flGroundSpeed * 15.0; // Adjust the multiplier as needed
 				
 				// Push the player
 				pBlocker->pev->velocity = vecPushDir;

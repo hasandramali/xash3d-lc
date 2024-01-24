@@ -2986,7 +2986,7 @@ void CBaseMonster::KeyValue( KeyValueData *pkvd )
 	if (FStrEq(pkvd->szKeyName, "allowpush"))
 	{
 		m_bAllowPush = atoi(pkvd->szValue) != 0;
-		return true;
+		pkvd->fHandled = TRUE;
 	}
 }
 

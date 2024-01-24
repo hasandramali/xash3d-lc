@@ -2993,12 +2993,6 @@ void CBaseMonster::KeyValue( KeyValueData *pkvd )
 	{
 		CBaseToggle::KeyValue( pkvd );
 	}
-	
-	if (FStrEq(pkvd->szKeyName, "allowpush"))
-	{
-		m_bAllowPush = atoi(pkvd->szValue) != 0;
-		pkvd->fHandled = TRUE;
-	}
 }
 
 //=========================================================

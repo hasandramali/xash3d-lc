@@ -514,9 +514,13 @@ void CBaseEntity::Activate( void )
 
 	if (m_activated) return;
 	m_activated = TRUE;
-	m_bAllowPush = FALSE;
 	InitMoveWith();
 	PostSpawn();
+	
+	if (FBitSet(pev->spawnflags, SF_PUSH_ALLOW))
+	{
+		m_bAllowPush = TRUE;
+	}
 }
 
 //LRC- called by activate() to support movewith

@@ -35,12 +35,12 @@
 #include "gamerules.h"
 
 #define MONSTER_CUT_CORNER_DIST		8 // 8 means the monster's bounding box is contained without the box of the node in WC
-#define MAX_MONSTERS 32
+#define MENTVALUE 32
 
 #ifdef _WIN32
-extern entvars_t g_MonsterEntValues[MAX_MONSTERS];
+extern entvars_t g_MonsterEntValues[MENTVALUE];
 #else
-entvars_t g_MonsterEntValues[MAX_MONSTERS];
+entvars_t g_MonsterEntValues[MENTVALUE];
 #endif
 
 Vector VecBModelOrigin( entvars_t *pevBModel );
@@ -2993,12 +2993,6 @@ void CBaseMonster::KeyValue( KeyValueData *pkvd )
 	else
 	{
 		CBaseToggle::KeyValue( pkvd );
-	}
-	
-	if (FStrEq(pkvd->szKeyName, "allowpush"))
-	{
-		m_bAllowPush = atoi(pkvd->szValue);
-		pkvd->fHandled = TRUE;
 	}
 }
 

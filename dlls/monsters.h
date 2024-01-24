@@ -163,11 +163,6 @@ public:
 	float m_lifeTime;
 };
 
-typedef struct entvars_s
-{
-    int m_bAllowPush;
-} entvars_t;
-
 #define CUSTOM_SCHEDULES\
 		virtual Schedule_t *ScheduleFromName( const char *pName );\
 		static Schedule_t *m_scheduleList[];

@@ -514,6 +514,7 @@ void CBaseEntity::Activate( void )
 
 	if (m_activated) return;
 	m_activated = TRUE;
+	m_bAllowPush = FALSE;
 	InitMoveWith();
 	PostSpawn();
 }

@@ -161,6 +161,7 @@ public:
 	int m_cBloodDecals;
 	int m_material;
 	float m_lifeTime;
+        bool m_bAllowPush;
 };
 
 #define CUSTOM_SCHEDULES\

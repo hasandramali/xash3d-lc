@@ -1897,6 +1897,7 @@ void CBaseMonster::Move( float flInterval )
 				pBlocker->pev->velocity = vecPushDir;
 			}
 			}
+			else { }
 		}
 
 		else 
@@ -2984,6 +2985,11 @@ void CBaseMonster::KeyValue( KeyValueData *pkvd )
 	else
 	{
 		CBaseToggle::KeyValue( pkvd );
+	}
+	if (FStrEq(pkvd->szKeyName, "pushallow"))
+	{
+		pev->fuser1 = atoi(pkvd->szValue);
+		pkvd->fHandled = true;
 	}
 }
 

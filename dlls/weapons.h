@@ -21,6 +21,8 @@
 class CBasePlayer;
 extern int gmsgWeapPickup;
 
+int UTIL_DefaultPlaybackFlags();
+
 void DeactivateSatchels( CBasePlayer *pOwner );
 
 // Contact Grenade / Timed grenade / Satchel Charge

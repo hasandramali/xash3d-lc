@@ -226,12 +226,12 @@ void CSniperrifle::PrimaryAttack()
 	}
 
 	// don't fire underwater
-	if (m_pPlayer->IsWeaponUnderWater())
+	/*if (m_pPlayer->IsWeaponUnderWater())
 	{
 		PlayEmptySound( );
 		m_flNextPrimaryAttack = 0.15;
 		return;
-	}
+	}*/
 
 	float flSpread = 0.001;
 
@@ -253,7 +253,7 @@ void CSniperrifle::PrimaryAttack()
 	m_pPlayer->m_iWeaponFlash = BRIGHT_GUN_FLASH;
 
 	Vector vecSrc	 = m_pPlayer->GetGunPosition( );
-	UTIL_MakeVectors(m_pPlayer->GetWeaponViewAngles());
+	//UTIL_MakeVectors(m_pPlayer->GetWeaponViewAngles());
 
 	Vector vecAiming;
 	vecAiming = gpGlobals->v_forward;

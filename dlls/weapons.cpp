@@ -319,10 +319,6 @@ void W_Precache( void )
 	UTIL_PrecacheOther( "ammo_9mmAR" );
 	UTIL_PrecacheOther( "ammo_ARgrenades" );
 
-	// opfor
-	UTIL_PrecacheOtherWeapon("weapon_sniperrifle");
-	UTIL_PrecacheOther("ammo_762");
-
 #if !defined( OEM_BUILD ) && !defined( HLDEMO_BUILD )
 	// python
 	UTIL_PrecacheOtherWeapon( "weapon_357" );

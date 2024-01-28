@@ -44,8 +44,6 @@ else()
 endif()
 
 set (SVDLL_SOURCES
-	weapons/CSniperRifle.cpp
-	UserMessages.cpp
 	agrunt.cpp
 	airtank.cpp
 	aflock.cpp
@@ -154,7 +152,7 @@ set (SVDLL_SOURCES
 	../pm_shared/pm_shared.c
 )
 
-include_directories (. weapons wpn_shared ../common ../engine ../pm_shared ../game_shared ../public)
+include_directories (. wpn_shared ../common ../engine ../pm_shared ../game_shared ../public)
 
 if(MSVC)
 	set(SVDLL_SOURCES

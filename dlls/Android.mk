@@ -19,10 +19,9 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/. \
 		    $(LOCAL_PATH)/../engine \
 		    $(LOCAL_PATH)/../public \
 		    $(LOCAL_PATH)/../pm_shared \
-                    $(LOCAL_PATH)/weapons \
 		    $(LOCAL_PATH)/../game_shared
 
-LOCAL_SRC_FILES := weapons/CSniperRifle.cpp UserMessages.cpp flyingcrowbar.cpp medkit.cpp aflock.cpp agrunt.cpp schedule.cpp airtank.cpp \
+LOCAL_SRC_FILES := flyingcrowbar.cpp medkit.cpp aflock.cpp agrunt.cpp schedule.cpp airtank.cpp \
 		alias.cpp animating.cpp animation.cpp apache.cpp barnacle.cpp barney.cpp \
 		bigmomma.cpp bloater.cpp bmodels.cpp bullsquid.cpp buttons.cpp cbase.cpp \
 		client.cpp combat.cpp controller.cpp crossbow.cpp crowbar.cpp defaultai.cpp \

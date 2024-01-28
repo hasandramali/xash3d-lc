@@ -39,6 +39,10 @@ LINK_ENTITY_TO_CLASS( weapon_sniperrifle, CSniperrifle )
 void CSniperrifle::Spawn( )
 {
 	Precache( );
+	pev->movetype = MOVETYPE_FLY;
+	pev->solid = SOLID_BBOX;
+
+	pev->gravity = 0.5;
 	m_iId = WEAPON_SNIPERRIFLE;
 	SET_MODEL(ENT(pev), "models/w_m40a1.mdl");
 
@@ -76,7 +80,7 @@ int CSniperrifle::GetItemInfo(ItemInfo *p)
 	p->iSlot = 2;
 	p->iPosition = 2;
 	p->iFlags = 0;
-	p->iId = m_iId = WEAPON_SNIPERRIFLE;
+	p->iId = WEAPON_SNIPERRIFLE;
 	p->iWeight = 10;
 
 	return 1;
@@ -239,7 +243,8 @@ void CSniperrifle::PrimaryAttack()
 	m_pPlayer->m_iWeaponFlash = BRIGHT_GUN_FLASH;
 
 	Vector vecSrc	 = m_pPlayer->GetGunPosition( );
-	//UTIL_MakeVectors(m_pPlayer->GetWeaponViewAngles());
+	UTIL_MakeVectors( anglesAim );
+	UTIL_TraceLine( vecSrc, vecSrc + vecDir * 8192, dont_ignore_monsters, m_pPlayer->edict(), &tr );
 
 	Vector vecAiming;
 	vecAiming = gpGlobals->v_forward;

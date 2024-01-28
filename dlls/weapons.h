@@ -1086,6 +1086,7 @@ public:
 
 
     BOOL ShouldWeaponIdle(void) { return TRUE; }
+	BOOL    m_fInZoom;
 
 	virtual BOOL UseDecrement(void)
 	{

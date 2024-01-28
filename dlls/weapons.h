@@ -1058,14 +1058,11 @@ class CSniperrifle : public CBasePlayerWeapon
 {
 public:
 
-#ifndef CLIENT_DLL
+#if !CLIENT_DLL
 	int		Save(CSave &save);
 	int		Restore(CRestore &restore);
 	static	TYPEDESCRIPTION m_SaveData[];
 #endif
-
-	virtual void ItemPostFrame( void );	// called each frame by the player PostThink
-    virtual void ItemImpulseCommand(int);
 
 	void Spawn(void);
 	void Precache(void);
@@ -1074,21 +1071,18 @@ public:
 	int AddToPlayer(CBasePlayer *pPlayer);
 	void PrimaryAttack(void);
 	void SecondaryAttack(void);
-	void ToggleScope( BOOL engage );
-    void ScopeZoomIn( );
-    void ScopeZoomOut( );
 	BOOL Deploy(void);
 	void Holster(int skiplocal = 0);
 	void Reload(void);
 	void WeaponIdle(void);
 
+	BOOL ShouldWeaponIdle(void) { return TRUE; }
 
-    BOOL ShouldWeaponIdle(void) { return TRUE; }
-	BOOL    m_fInZoom;
+	BOOL m_fInZoom;// don't save this. 
 
 	virtual BOOL UseDecrement(void)
 	{
-#if defined( CLIENT_WEAPONS )
+#if CLIENT_WEAPONS
 		return TRUE;
 #else
 		return FALSE;
@@ -1097,6 +1091,5 @@ public:
 
 private:
 	unsigned short m_usSniper;
-    int            m_TargetScopeFOV = 0;
 };
 #endif // WEAPONS_H

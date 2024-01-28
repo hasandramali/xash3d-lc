@@ -101,8 +101,6 @@ int CSniperrifle::AddToPlayer( CBasePlayer *pPlayer )
 
 void CSniperrifle::Holster( int skiplocal )
 {
-	KillLaser();
-
 	m_fInReload = FALSE;// cancel any reload in progress.
 	m_pPlayer->m_flNextAttack = UTIL_WeaponTimeBase() + 1.0;
 	SendWeaponAnim( SNIPER_HOLSTER );
@@ -195,14 +193,6 @@ void CSniperrifle::ScopeZoomOut()
 		m_TargetScopeFOV += 20;
 		EMIT_SOUND_DYN(ENT(m_pPlayer->pev), CHAN_ITEM, "weapons/sniper_zoom.wav", 1.0, ATTN_NORM, 0, PITCH_NORM);
 	}
-}
-
-void CSniperrifle::MakeLaser( void )
-{
-    if (m_fInZoom)
-    {
-        KillLaser();
-    }
 }
 
 void CSniperrifle::PrimaryAttack()

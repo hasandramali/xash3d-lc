@@ -1082,7 +1082,7 @@ public:
 	void Reload(void);
 	void WeaponIdle(void);
 
-    virtual void MakeLaser( void );
+        void MakeLaser( void );
 	virtual void KillLaser( void );
 
 

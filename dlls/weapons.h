@@ -1082,9 +1082,6 @@ public:
 	void Reload(void);
 	void WeaponIdle(void);
 
-        void MakeLaser( void );
-	virtual void KillLaser( void );
-
 
     BOOL ShouldWeaponIdle(void) { return TRUE; }
 	BOOL    m_fInZoom;

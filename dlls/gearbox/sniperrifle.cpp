@@ -203,10 +203,6 @@ void CSniperrifle::MakeLaser( void )
     {
         KillLaser();
     }
-    else
-    {
-        CBasePlayerWeapon::MakeLaser();
-    }
 }
 
 void CSniperrifle::PrimaryAttack()

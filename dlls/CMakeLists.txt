@@ -44,6 +44,8 @@ else()
 endif()
 
 set (SVDLL_SOURCES
+	weapons/CSniperRifle.cpp
+	UserMessages.cpp
 	agrunt.cpp
 	airtank.cpp
 	aflock.cpp

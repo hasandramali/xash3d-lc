@@ -331,7 +331,7 @@ int CCrowbar::Swing( int fFirst )
 		SetThink( &CCrowbar::Smack );
 		SetNextThink( 0.2 );
 #endif
-		m_flNextPrimaryAttack = GetNextAttackDelay( 0.25 );
+		m_flNextPrimaryAttack = GetNextAttackDelay( 0.30 );
 	}
 #ifdef CROWBAR_IDLE_ANIM
 	m_flTimeWeaponIdle = UTIL_WeaponTimeBase() + UTIL_SharedRandomFloat( m_pPlayer->random_seed, 10, 15 );

@@ -169,6 +169,8 @@ void DecalGunshot( TraceResult *pTrace, int iBulletType )
 		case BULLET_MONSTER_MP5:
 		case BULLET_PLAYER_BUCKSHOT:
 		case BULLET_PLAYER_357:
+		case BULLET_PLAYER_762:
+		case BULLET_MONSTER_762:
 		default:
 			// smoke and decal
 			UTIL_GunshotDecalTrace( pTrace, DamageDecal( pEntity, DMG_BULLET ) );
@@ -318,6 +320,10 @@ void W_Precache( void )
 	UTIL_PrecacheOtherWeapon( "weapon_medkit" );
 	UTIL_PrecacheOther( "ammo_9mmAR" );
 	UTIL_PrecacheOther( "ammo_ARgrenades" );
+
+	// opfor
+	UTIL_PrecacheOtherWeapon( "weapon_sniperrifle" );
+	UTIL_PrecacheOther( "ammo_762" );
 
 #if !defined( OEM_BUILD ) && !defined( HLDEMO_BUILD )
 	// python
@@ -1664,3 +1670,9 @@ TYPEDESCRIPTION	CSatchel::m_SaveData[] =
 };
 
 IMPLEMENT_SAVERESTORE( CSatchel, CBasePlayerWeapon )
+
+TYPEDESCRIPTION	CSniperrifle::m_SaveData[] =
+{
+	DEFINE_FIELD( CSniperrifle, m_fInSpecialReload, FIELD_INTEGER ),
+};
+IMPLEMENT_SAVERESTORE( CSniperrifle, CBasePlayerWeapon )

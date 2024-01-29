@@ -308,6 +308,10 @@ void CGameRules::RefreshSkillData ( void )
 	gSkillData.plrStomach = GetSkillCvar( "sk_player_stomach" );
 	gSkillData.plrLeg = GetSkillCvar( "sk_player_leg" );
 	gSkillData.plrArm = GetSkillCvar( "sk_player_arm" );
+
+	// Opfor Weapons
+	gSkillData.plrDmg762 = GetSkillCvar( "sk_plr_762_bullet" );
+	gSkillData.monDmg762 = GetSkillCvar( "sk_plr_762_bullet" );
 }
 
 //=========================================================

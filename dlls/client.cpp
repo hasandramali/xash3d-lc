@@ -582,16 +582,10 @@ void ClientCommand( edict_t *pEntity )
 
 	else if (FStrEq(pcmd, "lc_save"))
 	{
-		if (!pev || !pev->pvPrivateData || FNullEnt(pev))
+		if (!pEntity || !pEntity->pvPrivateData || FNullEnt(pEntity))
 			return;
 
-		if (pev->deadflag != DEAD_NO || pev->iuser1 == OBS_ROAMING || pev->iuser1 == OBS_CHASE_LOCKED)
-		{
-			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot save while dead");
-			return;
-		}
-
-		int iPlayerIndex = ENTINDEX(pev);
+		int iPlayerIndex = ENTINDEX(pEntity);
 
 		if (iPlayerIndex <= 0 || iPlayerIndex > 32)
 			return;
@@ -602,29 +596,35 @@ void ClientCommand( edict_t *pEntity )
 			return;
 		}
 
-		if (pev->button & IN_DUCK)
+		if (pEntity->v.button & IN_DUCK)
 		{
 			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot save while ducking");
 			return;
 		}
 
-		g_PlayerPositions[iPlayerIndex].position = pev->origin;
+		if (pEntity->v.deadflag != DEAD_NO)
+		{
+			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot save while dead");
+			return;
+		}
+
+		if (pEntity->v.movetype == MOVETYPE_NONE)
+		{
+			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot save while in spectator mode");
+			return;
+		}
+
+		g_PlayerPositions[iPlayerIndex].position = pEntity->v.origin;
 		g_PlayerPositions[iPlayerIndex].saveTime = gpGlobals->time;
 
 		ClientPrint(pev, HUD_PRINTNOTIFY, "Position has been saved");
 	}
 	else if (FStrEq(pcmd, "lc_load"))
 	{
-		if (!pev || !pev->pvPrivateData || FNullEnt(pev))
+		if (!pEntity || !pEntity->pvPrivateData || FNullEnt(pEntity))
 			return;
 
-		if (pev->deadflag != DEAD_NO || pev->iuser1 == OBS_ROAMING || pev->iuser1 == OBS_CHASE_LOCKED)
-		{
-			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot load while dead");
-			return;
-		}
-
-		int iPlayerIndex = ENTINDEX(pev);
+		int iPlayerIndex = ENTINDEX(pEntity);
 
 		if (iPlayerIndex <= 0 || iPlayerIndex > 32)
 			return;
@@ -635,14 +635,26 @@ void ClientCommand( edict_t *pEntity )
 			return;
 		}
 
-		if (pev->button & IN_DUCK)
+		if (pEntity->v.button & IN_DUCK)
 		{
 			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot load while ducking");
 			return;
 		}
 
-		pev->origin = g_PlayerPositions[iPlayerIndex].position;
-		SET_VIEW(pev, pev);
+		if (pEntity->v.deadflag != DEAD_NO)
+		{
+			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot load while dead");
+			return;
+		}
+
+		if (pEntity->v.movetype == MOVETYPE_NONE)
+		{
+			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot load while in spectator mode");
+			return;
+		}
+
+		pEntity->v.origin = g_PlayerPositions[iPlayerIndex].position;
+		SET_VIEW(pEntity, pEntity);
 		ClientPrint(pev, HUD_PRINTNOTIFY, "You have been teleported");
 	}
 

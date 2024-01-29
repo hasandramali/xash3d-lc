@@ -582,10 +582,16 @@ void ClientCommand( edict_t *pEntity )
 
 	else if (FStrEq(pcmd, "lc_save"))
 	{
-		if (!pEntity || !pEntity->pvPrivateData || FNullEnt(pEntity))
+		if (!pev || !pev->pvPrivateData || FNullEnt(pev))
 			return;
-		
-		int iPlayerIndex = ENTINDEX(pEntity);
+
+		if (pev->deadflag != DEAD_NO || pev->iuser1 == OBS_ROAMING || pev->iuser1 == OBS_CHASE_LOCKED)
+		{
+			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot save while dead");
+			return;
+		}
+
+		int iPlayerIndex = ENTINDEX(pev);
 
 		if (iPlayerIndex <= 0 || iPlayerIndex > 32)
 			return;
@@ -596,17 +602,29 @@ void ClientCommand( edict_t *pEntity )
 			return;
 		}
 
-		g_PlayerPositions[iPlayerIndex].position = pEntity->v.origin;
+		if (pev->button & IN_DUCK)
+		{
+			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot save while ducking");
+			return;
+		}
+
+		g_PlayerPositions[iPlayerIndex].position = pev->origin;
 		g_PlayerPositions[iPlayerIndex].saveTime = gpGlobals->time;
 
 		ClientPrint(pev, HUD_PRINTNOTIFY, "Position has been saved");
 	}
 	else if (FStrEq(pcmd, "lc_load"))
 	{
-		if (!pEntity || !pEntity->pvPrivateData || FNullEnt(pEntity))
+		if (!pev || !pev->pvPrivateData || FNullEnt(pev))
 			return;
 
-		int iPlayerIndex = ENTINDEX(pEntity);
+		if (pev->deadflag != DEAD_NO || pev->iuser1 == OBS_ROAMING || pev->iuser1 == OBS_CHASE_LOCKED)
+		{
+			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot load while dead");
+			return;
+		}
+
+		int iPlayerIndex = ENTINDEX(pev);
 
 		if (iPlayerIndex <= 0 || iPlayerIndex > 32)
 			return;
@@ -617,10 +635,17 @@ void ClientCommand( edict_t *pEntity )
 			return;
 		}
 
-		pEntity->v.origin = g_PlayerPositions[iPlayerIndex].position;
-		SET_VIEW(pEntity, pEntity);
+		if (pev->button & IN_DUCK)
+		{
+			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot load while ducking");
+			return;
+		}
+
+		pev->origin = g_PlayerPositions[iPlayerIndex].position;
+		SET_VIEW(pev, pev);
 		ClientPrint(pev, HUD_PRINTNOTIFY, "You have been teleported");
 	}
+
 
 	else if( FStrEq( pcmd, "drop" ) )
 	{

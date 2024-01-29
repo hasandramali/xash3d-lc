@@ -584,22 +584,22 @@ void ClientCommand( edict_t *pEntity )
 	{
 		if (!pEntity || !pEntity->pvPrivateData || FNullEnt(pEntity))
 			return;
-
+		
 		int iPlayerIndex = ENTINDEX(pEntity);
 
 		if (iPlayerIndex <= 0 || iPlayerIndex > 32)
 			return;
-		
+
 		if (gpGlobals->time - g_PlayerPositions[iPlayerIndex].saveTime < WAIT_TIME)
 		{
-			ClientPrint(ENT(pEntity), HUD_PRINTNOTIFY, "Wait a moment and try again\n");
+			ClientPrint(pev, HUD_PRINTNOTIFY, "Wait a moment and try again");
 			return;
 		}
 
 		g_PlayerPositions[iPlayerIndex].position = pEntity->v.origin;
 		g_PlayerPositions[iPlayerIndex].saveTime = gpGlobals->time;
 
-		ClientPrint(ENT(pEntity), HUD_PRINTNOTIFY, "Position has been saved\n");
+		ClientPrint(pev, HUD_PRINTNOTIFY, "Position has been saved");
 	}
 	else if (FStrEq(pcmd, "lc_load"))
 	{
@@ -613,13 +613,13 @@ void ClientCommand( edict_t *pEntity )
 
 		if (gpGlobals->time - g_PlayerPositions[iPlayerIndex].saveTime < WAIT_TIME)
 		{
-			ClientPrint(ENT(pEntity), HUD_PRINTNOTIFY, "Wait a moment and try again\n");
+			ClientPrint(pev, HUD_PRINTNOTIFY, "Wait a moment and try again");
 			return;
 		}
 
 		pEntity->v.origin = g_PlayerPositions[iPlayerIndex].position;
 		SET_VIEW(pEntity, pEntity);
-		ClientPrint(ENT(pEntity), HUD_PRINTNOTIFY, "You have been teleported\n");
+		ClientPrint(pev, HUD_PRINTNOTIFY, "You have been teleported");
 	}
 
 	else if( FStrEq( pcmd, "drop" ) )

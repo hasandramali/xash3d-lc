@@ -378,9 +378,9 @@ cvar_t	sk_9mm_bullet1 = {"sk_9mm_bullet1","0"};
 cvar_t	sk_9mm_bullet2 = {"sk_9mm_bullet2","0"};
 cvar_t	sk_9mm_bullet3 = {"sk_9mm_bullet3","0"};
 
-cvar_t	sk_plr_762_bullet1 = { "sk_plr_762_bullet1", "0" };
-cvar_t	sk_plr_762_bullet2 = { "sk_plr_762_bullet2", "0" };
-cvar_t	sk_plr_762_bullet3 = { "sk_plr_762_bullet3", "0" };
+cvar_t	sk_plr_762_bullet1 = { "sk_plr_762_bullet1", "100" };
+cvar_t	sk_plr_762_bullet2 = { "sk_plr_762_bullet2", "100" };
+cvar_t	sk_plr_762_bullet3 = { "sk_plr_762_bullet3", "100" };
 
 
 // HORNET

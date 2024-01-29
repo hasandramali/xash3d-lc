@@ -448,6 +448,7 @@ public:
 	virtual	BOOL FVisible( const Vector &vecOrigin );
 
 	//We use this variables to store each ammo count.
+        int ammo_762;
 	int ammo_9mm;
 	int ammo_357;
 	int ammo_bolts;

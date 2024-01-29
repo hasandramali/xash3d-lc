@@ -70,6 +70,8 @@ struct PlayerPositionData
     float saveTime;
 };
 
+PlayerPositionData g_PlayerPositions[33];
+
 void LinkUserMessages( void );
 
 /*
@@ -470,7 +472,7 @@ void Host_Say( edict_t *pEntity, int teamonly )
 
 void MapInit()
 {
-	memset(g_PlayerLocations, 0, sizeof(g_PlayerLocations));
+    memset(g_PlayerPositions, 0, sizeof(g_PlayerPositions)); // Oyuncu konumu verilerini sıfırla
 }
 
 /*

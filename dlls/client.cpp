@@ -653,6 +653,7 @@ void ClientCommand( edict_t *pEntity )
 			return;
 		}
 
+		g_PlayerPositions[iPlayerIndex].saveTime = gpGlobals->time;
 		pEntity->v.origin = g_PlayerPositions[iPlayerIndex].position;
 		SET_VIEW(pEntity, pEntity);
 		ClientPrint(pev, HUD_PRINTNOTIFY, "You have been teleported");

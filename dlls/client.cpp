@@ -60,7 +60,11 @@ extern int g_teamplay;
 extern cvar_t bhopcap;
 extern "C" int g_bhopcap;
 
+#define WAIT_TIME 0.3
+
 float m_flUnstuckCooldown = 0;
+
+Vector g_PlayerLocations[33];
 
 void LinkUserMessages( void );
 
@@ -460,6 +464,11 @@ void Host_Say( edict_t *pEntity, int teamonly )
 	}
 }
 
+void MapInit()
+{
+	memset(g_PlayerLocations, 0, sizeof(g_PlayerLocations));
+}
+
 /*
 ===========
 ClientCommand
@@ -565,6 +574,47 @@ void ClientCommand( edict_t *pEntity )
 		}
 	}
 
+	if (FStrEq(pcmd, "lc_save"))
+	{
+		if (!pEntity || !pEntity->pvPrivateData || FNullEnt(pEntity))
+			return;
+
+		int iPlayerIndex = ENTINDEX(pEntity);
+
+		if (iPlayerIndex <= 0 || iPlayerIndex > 32)
+			return;
+
+		if (gpGlobals->time - g_PlayerLocations[iPlayerIndex].flSaveTime < WAIT_TIME)
+		{
+			ClientPrint(pEntity, HUD_PRINTNOTIFY, "Wait a moment and try again\n");
+			return;
+		}
+
+		g_PlayerLocations[iPlayerIndex] = pEntity->v.origin;
+		g_PlayerLocations[iPlayerIndex].flSaveTime = gpGlobals->time;
+
+		ClientPrint(pEntity, HUD_PRINTNOTIFY, "Position has been saved.\n");
+	}
+	else if (FStrEq(pcmd, "lc_load"))
+	{
+		if (!pEntity || !pEntity->pvPrivateData || FNullEnt(pEntity))
+			return;
+
+		int iPlayerIndex = ENTINDEX(pEntity);
+
+		if (iPlayerIndex <= 0 || iPlayerIndex > 32)
+			return;
+
+		if (gpGlobals->time - g_PlayerLocations[iPlayerIndex].flSaveTime < WAIT_TIME)
+		{
+			ClientPrint(pEntity, HUD_PRINTNOTIFY, "Wait a moment and try again\n");
+			return;
+		}
+
+		pEntity->v.origin = g_PlayerLocations[iPlayerIndex];
+		SET_VIEW(pEntity, pEntity);
+		ClientPrint(pEntity, HUD_PRINTNOTIFY, "You have been teleported\n");
+	}
 
 	else if( FStrEq( pcmd, "drop" ) )
 	{

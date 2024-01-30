@@ -4044,8 +4044,8 @@ class CTriggerTeleport : public CBaseTrigger
 {
 public:
 	void Spawn( void );
-	void TeleportTouch ( CBaseEntity *pOther );
-        void TeleportAllPlayers ( CBaseEntity *pOther );
+	void EXPORT TeleportTouch ( CBaseEntity *pOther );
+        void EXPORT TeleportAllPlayers ( CBaseEntity *pOther );
         void KeyValue( KeyValueData *pkvd );
 };
 

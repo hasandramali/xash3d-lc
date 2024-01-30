@@ -887,15 +887,11 @@ void GameDLLInit( void )
 
 extern "C"
 {
-        void BhopCommand(){
-		if ( autojump.value != 1 )
-		{
-			AutoJumpValue = 1;
-		}
-		else
-		{
-			AutoJumpValue = 0;
-		}
+        int AutoJumpValue(int index)
+	{
+		if( autojump.value && index >= 1 )
+			return TRUE;
+		return FALSE;
 	}
 
 		

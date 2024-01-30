@@ -1,8 +1,13 @@
 name: Build for Windows
 
 on:
-  workflow_dispatch:
-  
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: windows-latest
@@ -12,12 +17,11 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Set up CMake
-        uses: cmake/setup-cmake@v2
-        with:
-          cmake-version: ${{ matrix.cmake_version }}
+      - name: Install CMake
+        run: |
+          choco install cmake --version ${{ matrix.cmake_version }} --yes
 
       - name: Configure
         run: cmake -S . -B build

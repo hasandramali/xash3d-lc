@@ -6,25 +6,26 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        cmake_version: [3.21.3]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Install MinGW
-      run: choco install mingw -y
+      - name: Install CMake
+        run: |
+          choco install cmake --version ${{ matrix.cmake_version }} --yes
 
-    - name: Configure CMake
-      run: cmake -G "MinGW Makefiles" .
+      - name: Configure
+        run: cmake -S . -B build
 
-    - name: Build
-      run: cmake --build . --config Release
+      - name: Build
+        run: cmake --build build --config Release
 
-    - name: Install
-      run: cmake --install build/
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
           name: windows-build
           path: build

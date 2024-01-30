@@ -39,10 +39,6 @@ extern float vJumpAngles[3];
 #else
 extern int IsCoopPlayer( int index );
 
-int AutoJumpValue() {
-    return (autojump.value != 0.0f);
-}
-
 int PM_Ignore( physent_t *pe )
 {
 	if( IsCoopPlayer(pe->info) )
@@ -2716,7 +2712,8 @@ void PM_Jump( void )
 		return;		// in air, so no effect
 	}
 
-	if (AutoJumpValue() && (pmove->oldbuttons & IN_JUMP)) { return; }
+	if ( AutoJumpValue && (pmove->oldbuttons & IN_JUMP))
+		return;
 
 	// In the air now.
 	pmove->onground = -1;

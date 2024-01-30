@@ -888,12 +888,9 @@ void GameDLLInit( void )
 extern "C"
 {
         int AutoJumpValue(int index)
-	{
-		if( autojump.value && index >= 1 )
-			return TRUE;
-		return FALSE;
+        {
+		return (autojump.value && index >= 1) ? TRUE : FALSE;
 	}
-
 		
 	int IsCoopPlayer(int index)
 	{

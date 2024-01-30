@@ -24,7 +24,7 @@ cvar_t fragsleft	= { "mp_fragsleft","0", FCVAR_SERVER | FCVAR_UNLOGGED };	  // D
 cvar_t timeleft		= { "mp_timeleft","0" , FCVAR_SERVER | FCVAR_UNLOGGED };	  // "      "
 
 // multiplayer server rules
-cvar_t autojump         = { "mp_autojump","0", FCVAR_SERVER };
+extern cvar_t autojump         = { "mp_autojump","0", FCVAR_SERVER };
 cvar_t semiclip		= { "mp_semiclip","1", FCVAR_SERVER };
 cvar_t teamplay		= { "mp_teamplay","1", FCVAR_SERVER };
 cvar_t fraglimit	= { "mp_fraglimit","0", FCVAR_SERVER };

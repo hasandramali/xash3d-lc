@@ -28,12 +28,11 @@ jobs:
           install: >-
             git
             make
-            ninja
             cmake
 
       - name: Build project
         run: |
-          cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release
+          cmake -G "MSYS Makefiles" -B build -DCMAKE_BUILD_TYPE=Release
           cmake --build build
 
       - name: Upload Artifact

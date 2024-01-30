@@ -2713,8 +2713,11 @@ void PM_Jump( void )
 		return;		// in air, so no effect
 	}
 
-	if ( AutoJumpValue(pmove->index) && (pmove->oldbuttons & IN_JUMP))
-		return;
+	int AutoJumpValue()
+        {
+		return (autojump.value != 0.0f) ? TRUE : FALSE;
+	}
+
 
 	// In the air now.
 	pmove->onground = -1;

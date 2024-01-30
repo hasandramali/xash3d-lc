@@ -26,7 +26,7 @@ cmake_minimum_required(VERSION 2.6.0)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 include(VSForceXPToolchain) # Force XP toolchain for Visual Studio
 
-project (XASH3D-SCHL)
+project (XASH3D-LC)
 
 #--------------
 # USER DEFINES \

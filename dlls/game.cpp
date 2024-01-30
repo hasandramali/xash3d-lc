@@ -887,6 +887,16 @@ void GameDLLInit( void )
 
 extern "C"
 {
+        if ( autojump.value != 1 )
+	{
+		AutoJumpValue = 1;
+	}
+        else
+	{
+		AutoJumpValue = 0;
+	}
+
+		
 	int IsCoopPlayer(int index)
 	{
 		if( semiclip.value && index >= 1 && index <= gpGlobals->maxClients+1 )

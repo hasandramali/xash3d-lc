@@ -1,42 +1,31 @@
-name: Windows Build
+name: Build for Windows
 
 on:
   workflow_dispatch:
-
+  
 jobs:
   build:
     runs-on: windows-latest
-
     strategy:
-      fail-fast: false
       matrix:
-        include:
-          - icon: '⬛'
-            sys: mingw32
-
-    name: Build ${{ matrix.sys }}
+        cmake_version: [3.21.3]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup MSYS2
-        uses: msys2/setup-msys2@v2
+      - name: Set up CMake
+        uses: cmake/setup-cmake@v2
         with:
-          msystem: ${{ matrix.sys }}
-          update: true
-          install: >-
-            git
-            make
-            cmake
-            mingw-w64-i686-gcc
+          cmake-version: ${{ matrix.cmake_version }}
 
-      - name: Build project
-        run: |
-          cmake -G "MSYS Makefiles" -B build -DCMAKE_BUILD_TYPE=Release
-          cmake --build build
+      - name: Configure
+        run: cmake -S . -B build
 
-      - name: Upload Artifact
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: windows-build

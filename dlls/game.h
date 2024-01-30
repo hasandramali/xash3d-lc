@@ -38,6 +38,7 @@ extern cvar_t teamoverride;
 extern cvar_t defaultteam;
 extern cvar_t allowmonsters;
 extern cvar_t autojump;
+int AutoJumpValue;
 
 // Engine Cvars
 extern cvar_t *g_psv_gravity;

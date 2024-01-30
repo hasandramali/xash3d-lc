@@ -9,10 +9,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup MSYS2
-      uses: matken11235/setup-msys2@v2
+      uses: msys2/setup-msys2@v2
       with:
         mingw: x86_64
         update: true
@@ -25,7 +25,7 @@ jobs:
 
     - name: Upload Artifact
       if: success()
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: xash3d_windows_build
         path: build

@@ -890,11 +890,11 @@ extern "C"
         void BhopCommand(){
 		if ( autojump.value != 1 )
 		{
-			AutoJumpValue = 1;
+			AutoJumpValue = true;
 		}
 		else
 		{
-			AutoJumpValue = 0;
+			AutoJumpValue = false;
 		}
 	}
 

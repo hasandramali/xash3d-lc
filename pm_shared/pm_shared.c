@@ -38,7 +38,10 @@ extern float vJumpOrigin[3];
 extern float vJumpAngles[3];
 #else
 extern int IsCoopPlayer( int index );
-int AutoJumpValue(int index);
+
+int AutoJumpValue() {
+    return (autojump.value != 0.0f);
+}
 
 int PM_Ignore( physent_t *pe )
 {
@@ -133,8 +136,6 @@ playermove_t *pmove = NULL;
 #define CONTENTS_FLYFIELD		-17
 #define CONTENTS_FLYFIELD_GRAVITY	-18
 #define CONTENTS_FOG			-19
-#define TRUE 1
-#define FALSE 0
 
 static vec3_t rgv3tStuckTable[54];
 static int rgStuckLast[MAX_CLIENTS][2];
@@ -2715,11 +2716,7 @@ void PM_Jump( void )
 		return;		// in air, so no effect
 	}
 
-	int AutoJumpValue()
-        {
-		return (autojump.value != 0.0f) ? TRUE : FALSE;
-	}
-
+	if (AutoJumpValue() && (pmove->oldbuttons & IN_JUMP)) { return; }
 
 	// In the air now.
 	pmove->onground = -1;

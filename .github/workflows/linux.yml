@@ -9,7 +9,7 @@ jobs:
    runs-on: ubuntu-latest
    steps:
    - name: Checkout sources
-     uses: actions/checkout@v2
+     uses: actions/checkout@v3
      with:
           fetch-depth: 0
           submodules: recursive
@@ -20,7 +20,7 @@ jobs:
            cmake ..
            make
    - name: Upload artifacts
-     uses: actions/upload-artifact@v2
+     uses: actions/upload-artifact@v3
      with:
           name: linux-i386
           path: compiled/dlls/hl.so

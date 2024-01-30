@@ -37,7 +37,6 @@ extern cvar_t teamlist;
 extern cvar_t teamoverride;
 extern cvar_t defaultteam;
 extern cvar_t allowmonsters;
-extern cvar_t autojump;
 int AutoJumpValue;
 
 // Engine Cvars

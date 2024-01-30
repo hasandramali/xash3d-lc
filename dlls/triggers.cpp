@@ -4055,10 +4055,10 @@ void CTriggerTeleport::Spawn( void )
 {
 	InitTrigger();
 
-	SetTouch(&CTriggerTeleport :: TeleportTouch );
+	SetTouch(&CTriggerTeleport::TeleportTouch);
 }
 
-void CTriggerTeleport :: TeleportTouch( CBaseEntity *pOther )
+void CTriggerTeleport::TeleportTouch(CBaseEntity *pOther)
 {
 	entvars_t* pevToucher = pOther->pev;
 	CBaseEntity *pTarget = NULL;

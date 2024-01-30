@@ -4045,6 +4045,8 @@ class CTriggerTeleport : public CBaseTrigger
 public:
 	void Spawn( void );
 	void EXPORT TeleportTouch ( CBaseEntity *pOther );
+        void EXPORT TeleportAllPlayers ( CBaseEntity *pOther );
+        void KeyValue( KeyValueData *pkvd );
 };
 
 LINK_ENTITY_TO_CLASS( trigger_teleport, CTriggerTeleport )
@@ -4074,6 +4076,32 @@ void CTriggerTeleport :: TeleportTouch( CBaseEntity *pOther )
 	pTarget = UTIL_FindEntityByTargetname( pTarget, STRING(pev->target) );
 	if ( !pTarget )
 	   return;
+
+	if (pev->fuser2 == 1)
+	{
+		for (int i = 1; i <= gpGlobals->maxClients; i++)
+		{
+			CBaseEntity *pPlayer = UTIL_PlayerByIndex(i);
+			if (pPlayer && pPlayer->IsPlayer() && pPlayer != pOther)
+			{
+				UTIL_SetOrigin(pPlayer, pTarget->pev->origin);
+				pPlayer->pev->angles = pTarget->pev->angles;
+				pPlayer->pev->velocity = pPlayer->pev->basevelocity = g_vecZero;
+				pPlayer->pev->v_angle = pTarget->pev->angles;
+				pPlayer->pev->fixangle = TRUE;
+				pPlayer->pev->flags &= ~FL_ONGROUND;
+			}
+		}
+	}
+	else if (pev->fuser2 == 2)
+	{
+		SetTouch(NULL);
+		SetThink(&CTriggerTeleport::TeleportAllPlayers);
+		pev->nextthink = gpGlobals->time;
+	}
+	else
+	{
+	}
 
 	//LRC - landmark based teleports
 	CBaseEntity *pLandmark = UTIL_FindEntityByTargetname( NULL, STRING(pev->message) );
@@ -4149,6 +4177,44 @@ void CTriggerTeleport :: TeleportTouch( CBaseEntity *pOther )
 	pevToucher->fixangle = TRUE;
 
 	FireTargets(STRING(pev->noise), pOther, this, USE_TOGGLE, 0);
+}
+
+void CTriggerTeleport::TeleportAllPlayers(CBaseEntity *pOther)
+{
+    // Get the target entity
+    CBaseEntity *pTarget = UTIL_FindEntityByTargetname(NULL, STRING(pev->target));
+    if (!pTarget)
+        return;
+
+    // Get all players
+    for (int i = 1; i <= gpGlobals->maxClients; i++)
+    {
+        CBaseEntity *pPlayer = UTIL_PlayerByIndex(i);
+        if (pPlayer && pPlayer->IsPlayer() && pPlayer != pOther)
+        {
+            UTIL_SetOrigin(pPlayer, pTarget->pev->origin);
+            pPlayer->pev->angles = pTarget->pev->angles;
+            pPlayer->pev->velocity = pPlayer->pev->basevelocity = g_vecZero;
+            pPlayer->pev->v_angle = pTarget->pev->angles;
+            pPlayer->pev->fixangle = TRUE;
+            pPlayer->pev->flags &= ~FL_ONGROUND;
+        }
+    }
+
+    SetTouch(&CTriggerTeleport::TeleportTouch);
+}
+
+void CTriggerTeleport::KeyValue(KeyValueData *pkvd)
+{
+	if (FStrEq(pkvd->szKeyName, "tpeveryone"))
+	{
+		pev->fuser2 = atoi(pkvd->szValue);
+		pkvd->fHandled = TRUE;
+	}
+	else
+	{
+		CBaseTrigger::KeyValue(pkvd);
+	}
 }
 
 LINK_ENTITY_TO_CLASS( info_teleport_destination, CPointEntity )

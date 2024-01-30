@@ -4181,27 +4181,26 @@ void CTriggerTeleport::TeleportTouch(CBaseEntity *pOther)
 
 void CTriggerTeleport::TeleportAllPlayers()
 {
-    // Get the target entity
-    CBaseEntity *pTarget = UTIL_FindEntityByTargetname(NULL, STRING(pev->target));
-    if (!pTarget)
-        return;
+	// Get the target entity
+	CBaseEntity *pTarget = UTIL_FindEntityByTargetname(NULL, STRING(pev->target));
+	if (!pTarget)
+		return;
 
-    // Get all players
-    for (int i = 1; i <= gpGlobals->maxClients; i++)
-    {
-        CBaseEntity *pPlayer = UTIL_PlayerByIndex(i);
-        if (pPlayer && pPlayer->IsPlayer() && pPlayer != pOther)
-        {
-            UTIL_SetOrigin(pPlayer, pTarget->pev->origin);
-            pPlayer->pev->angles = pTarget->pev->angles;
-            pPlayer->pev->velocity = pPlayer->pev->basevelocity = g_vecZero;
-            pPlayer->pev->v_angle = pTarget->pev->angles;
-            pPlayer->pev->fixangle = TRUE;
-            pPlayer->pev->flags &= ~FL_ONGROUND;
-        }
-    }
-
-    SetTouch(&CTriggerTeleport::TeleportTouch);
+	// Get all players
+	for (int i = 1; i <= gpGlobals->maxClients; i++)
+		{
+			CBaseEntity *pPlayer = UTIL_PlayerByIndex(i);
+			if (pPlayer && pPlayer->IsPlayer())
+			{
+				UTIL_SetOrigin(pPlayer, pTarget->pev->origin);
+				pPlayer->pev->angles = pTarget->pev->angles;
+				pPlayer->pev->velocity = pPlayer->pev->basevelocity = g_vecZero;
+				pPlayer->pev->v_angle = pTarget->pev->angles;
+				pPlayer->pev->fixangle = TRUE;
+				pPlayer->pev->flags &= ~FL_ONGROUND;
+			}
+		}
+	SetTouch(&CTriggerTeleport::TeleportTouch);
 }
 
 void CTriggerTeleport::KeyValue(KeyValueData *pkvd)

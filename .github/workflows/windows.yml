@@ -15,7 +15,7 @@ jobs:
       run: choco install mingw -y
 
     - name: Configure CMake
-      run: cmake -G "MinGW Makefiles" ..
+      run: cmake -G "MinGW Makefiles" .
 
     - name: Build
       run: cmake --build . --config Release

@@ -38,7 +38,7 @@ extern float vJumpOrigin[3];
 extern float vJumpAngles[3];
 #else
 extern int IsCoopPlayer( int index );
-extern int AutoJumpValue( int index );
+int AutoJumpValue(int index);
 
 int PM_Ignore( physent_t *pe )
 {

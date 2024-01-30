@@ -4179,7 +4179,7 @@ void CTriggerTeleport::TeleportTouch(CBaseEntity *pOther)
 	FireTargets(STRING(pev->noise), pOther, this, USE_TOGGLE, 0);
 }
 
-void CTriggerTeleport::TeleportAllPlayers(CBaseEntity *pOther)
+void CTriggerTeleport::TeleportAllPlayers()
 {
     // Get the target entity
     CBaseEntity *pTarget = UTIL_FindEntityByTargetname(NULL, STRING(pev->target));

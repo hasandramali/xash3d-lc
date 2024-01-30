@@ -133,6 +133,8 @@ playermove_t *pmove = NULL;
 #define CONTENTS_FLYFIELD		-17
 #define CONTENTS_FLYFIELD_GRAVITY	-18
 #define CONTENTS_FOG			-19
+#define TRUE 1
+#define FALSE 0
 
 static vec3_t rgv3tStuckTable[54];
 static int rgStuckLast[MAX_CLIENTS][2];

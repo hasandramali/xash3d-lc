@@ -1,31 +1,48 @@
 name: Windows Build
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: windows-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - icon: '⬛'
+            sys: mingw32
+
+    name: Build ${{ matrix.sys }}
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Setup MSYS2
-      uses: msys2/setup-msys2@v2
-      with:
-        mingw: x86_64
-        update: true
+      - name: Setup MSYS2
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: ${{ matrix.sys }}
+          update: true
+          install: >-
+            git
+            make
+            ninja
+            cmake
 
-    - name: Install dependencies
-      run: pacman -S --noconfirm cmake
+      - name: Build project
+        run: |
+          cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build
 
-    - name: Build
-      run: cmake -B build && cmake --build build --config Release
-
-    - name: Upload Artifact
-      if: success()
-      uses: actions/upload-artifact@v3
-      with:
-        name: xash3d_windows_build
-        path: build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-build
+          path: build

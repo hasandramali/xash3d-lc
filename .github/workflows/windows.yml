@@ -32,7 +32,7 @@ jobs:
 
       - name: Build project
         run: |
-          cmake -G "MSYS Makefiles" -B build -DCMAKE_BUILD_TYPE=Release
+          cmake -G "MSYS Makefiles" -B build -m32 -DCMAKE_BUILD_TYPE=Release
           cmake --build build
 
       - name: Upload Artifact

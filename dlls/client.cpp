@@ -2093,29 +2093,3 @@ int AllowLagCompensation( void )
 {
 	return 1;
 }
-
-void CAM_ToThirdPerson( void )
-{
-    vec3_t viewangles;
-    gEngfuncs.GetViewAngles( (float *)viewangles );
-
-    if( !cam_thirdperson )
-    {
-        if ( !gEngfuncs.pfnGetMaxClients() || cl_thirdperson )
-        {
-            cam_thirdperson = 1; 
-            cam_ofs[YAW] = viewangles[YAW]; 
-            cam_ofs[PITCH] = viewangles[PITCH]; 
-            cam_ofs[2] = CAM_MIN_DIST; 
-        }
-    }
-    else
-    {
-        if ( !gEngfuncs.pfnGetMaxClients() || !cl_thirdperson )
-        {
-            cam_thirdperson = 0;
-        }
-    }
-
-    gEngfuncs.Cvar_SetValue( "cam_command", 0 );
-}

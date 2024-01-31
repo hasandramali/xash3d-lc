@@ -83,8 +83,8 @@ void CPointCheckpoint::Spawn( void )
 {
     Precache();
     SET_MODEL(ENT(pev), "models/lambda.mdl");
-    pev->solid = SOLID_NOT;
-    pev->effects |= EF_DRAW;
+    pev->effects &= ~EF_NODRAW;
+    pev->rendermode = kRenderTransAdd;
     UTIL_SetSize(pev, Vector(-10, -10, -10), Vector(10, 10, 10));
 
     SetTouch(NULL);

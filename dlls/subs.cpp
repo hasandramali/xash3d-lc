@@ -86,7 +86,7 @@ void CPointCheckpoint::Spawn( void )
     pev->effects &= ~EF_NODRAW;
     UTIL_SetSize(pev, Vector(-10, -10, -10), Vector(10, 10, 10));
 
-    SetTouch(&CPointCheckpoint::Touch);
+    SetTouch(NULL);
 }
 
 void CPointCheckpoint::KeyValue( KeyValueData *pkvd )

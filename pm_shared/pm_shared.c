@@ -2712,7 +2712,7 @@ void PM_Jump( void )
 		return;		// in air, so no effect
 	}
 
-	if (!CVAR_GET_FLOAT("mp_autojump") && (pmove->oldbuttons & IN_JUMP))
+	if (cvar_mp_autojump != 1 && (pmove->oldbuttons & IN_JUMP))
 		return;
 
 	// In the air now.

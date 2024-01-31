@@ -82,24 +82,33 @@ void CPointCheckpoint::Spawn( void )
 {
     Precache();
     SET_MODEL(ENT(pev), "models/lambda.mdl");
-    pev->solid = SOLID_NOT;
+    pev->solid = SOLID_TRIGGER;
     pev->effects &= ~EF_NODRAW;
+    pev->rendermode = kRenderNormal;
+    pev->renderamt = 255;
     UTIL_SetSize(pev, Vector(-10, -10, -10), Vector(10, 10, 10));
 
-    SetTouch(NULL);
+    SetTouch(&CPointCheckpoint::Touch);
 }
 
 void CPointCheckpoint::KeyValue( KeyValueData *pkvd )
 {
-    if (FStrEq(pkvd->szKeyName, "setorigin"))
-    {
-        UTIL_StringToVector(m_vecOrigin, pkvd->szValue);
-        pkvd->fHandled = TRUE;
-    }
-    else
-    {
-        CPointEntity::KeyValue(pkvd);
-    }
+	if (FStrEq(pkvd->szKeyName, "setorigin"))
+        {
+		UTIL_StringToVector(m_vecOrigin, pkvd->szValue);
+		pkvd->fHandled = TRUE;
+	}
+	else if
+	{
+		if( FStrEq( pkvd->szKeyName, "tpeveryone"))
+			pev->fuser3 = ALLOC_STRING(pkvd->szValue);
+			pkvd->fHandled = TRUE;
+	}
+	    
+	else
+	{
+		CPointEntity::KeyValue(pkvd);
+	}
 }
 
 void CPointCheckpoint::Touch(CBaseEntity *pOther)
@@ -107,12 +116,31 @@ void CPointCheckpoint::Touch(CBaseEntity *pOther)
     if (!pOther || !pOther->IsPlayer())
         return;
 
+    CBasePlayer *pPlayer = static_cast<CBasePlayer*>(pOther);
+    const char* playerName = STRING(pPlayer->pev->netname);
+
     CBaseEntity *pEntity = NULL;
     while ((pEntity = UTIL_FindEntityByClassname(pEntity, "info_player_start")) != NULL)
     {
         pEntity->pev->origin = m_vecOrigin;
     }
+
+    if (pev->fuser3 == 1)
+    {
+        for (int i = 1; i <= gpGlobals->maxClients; i++)
+        {
+            CBaseEntity *pPlayer = UTIL_PlayerByIndex(i);
+            if (pPlayer && pPlayer->IsPlayer())
+            {
+                UTIL_SetOrigin(pPlayer, m_vecOrigin);
+            }
+        }
+    }
+
     UTIL_Remove(this);
+    char szMessage[128];
+    sprintf(szMessage, "%s activated checkpoint\n", playerName);
+    UTIL_ClientPrintAll(HUD_PRINTCENTER, szMessage);
 }
 
 void CPointCheckpoint::Precache( void )

@@ -71,6 +71,7 @@ class CMovableSpawnPoint : public CPointEntity
 public:
     void Spawn( void );
     void MoveTo(Vector newPos);
+    void KeyValue(KeyValueData *pkvd);
 
 private:
     Vector m_startPos;
@@ -79,7 +80,6 @@ private:
 void CMovableSpawnPoint::Spawn( void )
 {
     CPointEntity::Spawn();
-
     m_startPos = pev->origin;
 }
 
@@ -88,6 +88,25 @@ void CMovableSpawnPoint::MoveTo(Vector newPos)
     pev->origin = newPos;
 
     UTIL_SetOrigin(this, newPos);
+}
+
+void CMovableSpawnPoint::KeyValue(KeyValueData *pkvd)
+{
+    if (FStrEq(pkvd->szKeyName, "m_mark"))
+    {
+        pev->fuser3 = ALLOC_STRING(pkvd->szValue);
+        pkvd->fHandled = TRUE;
+
+        CBaseEntity *pEntity = UTIL_FindEntityByTargetname(NULL, STRING(pev->fuser3));
+        if (pEntity)
+        {
+            MoveTo(pEntity->pev->origin);
+        }
+    }
+    else
+    {
+        CPointEntity::KeyValue(pkvd);
+    }
 }
 
 // These are the new entry points to entities. 

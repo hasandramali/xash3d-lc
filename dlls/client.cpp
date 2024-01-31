@@ -629,15 +629,8 @@ void ClientCommand( edict_t *pEntity )
 		if (iPlayerIndex <= 0 || iPlayerIndex > 32)
 			return;
 
-		/*if (gpGlobals->time - g_PlayerPositions[iPlayerIndex].saveTime < WAIT_TIME)
+		if (g_PlayerPositions[iPlayerIndex].saveTime == 0)
 		{
-			ClientPrint(pev, HUD_PRINTNOTIFY, "Wait a moment and try again");
-			return;
-		}*/
-
-		if (pEntity->v.button & IN_DUCK)
-		{
-			ClientPrint(pev, HUD_PRINTNOTIFY, "Cannot load while ducking");
 			return;
 		}
 
@@ -653,7 +646,6 @@ void ClientCommand( edict_t *pEntity )
 			return;
 		}
 
-		//g_PlayerPositions[iPlayerIndex].saveTime = gpGlobals->time;
 		pEntity->v.origin = g_PlayerPositions[iPlayerIndex].position;
 		SET_VIEW(pEntity, pEntity);
 		ClientPrint(pev, HUD_PRINTNOTIFY, "You have been teleported");

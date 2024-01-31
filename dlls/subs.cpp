@@ -84,7 +84,7 @@ void CPointCheckpoint::Spawn( void )
     Precache();
     SET_MODEL(ENT(pev), "models/lambda.mdl");
     pev->solid = SOLID_NOT;
-    pev->effects |= EF_NODRAW;
+    pev->effects |= EF_DRAW;
     UTIL_SetSize(pev, Vector(-10, -10, -10), Vector(10, 10, 10));
 
     SetTouch(NULL);
@@ -114,14 +114,11 @@ void CPointCheckpoint::Touch(CBaseEntity *pOther)
         return;
 
     CBaseEntity *pTarget = UTIL_FindEntityByTargetname(NULL, STRING(m_strSpawnTarget));
-    if (!pTarget)
+    if (!pTarget || !FClassnameIs(pTarget->pev, "info_player_start"))
         return;
+	
+    UTIL_SetOrigin(pTarget, m_vecOrigin);
 
-    if (pTarget->IsPlayer())
-    {
-        UTIL_SetOrigin(pTarget, m_vecOrigin);
-        SET_VIEW(pTarget->edict(), pTarget->edict());
-    }
     pTarget->Touch(pOther);
     SetTouch(NULL);
 }

@@ -961,16 +961,6 @@ public:
 	int		m_iMode;
 };
 
-class CMovableSpawnPoint : public CPointEntity
-{
-public:
-    void Spawn( void );
-    void MoveTo(Vector newPos);
-
-private:
-    Vector m_startPos;
-};
-
 // this moved here from world.cpp, to allow classes to be derived from it
 //=======================
 // CWorld

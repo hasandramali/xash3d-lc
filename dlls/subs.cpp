@@ -76,17 +76,23 @@ public:
 
 private:
     Vector m_vecOrigin;
+    bool m_bActivated;
 };
+
 
 void CPointCheckpoint::Spawn( void )
 {
     Precache();
     SET_MODEL(ENT(pev), "models/lambda.mdl");
     pev->solid = SOLID_NOT;
-    pev->effects |= EF_NODRAW;
+    pev->effects &= ~EF_NODRAW;
+    pev->rendermode = kRenderTransAdd;
+    pev->renderamt = 100;
     UTIL_SetSize(pev, Vector(-10, -10, -10), Vector(10, 10, 10));
 
-    SetTouch(NULL);
+    SetTouch(&CPointCheckpoint::Touch);
+
+    m_bActivated = false;
 }
 
 void CPointCheckpoint::KeyValue( KeyValueData *pkvd )
@@ -104,7 +110,7 @@ void CPointCheckpoint::KeyValue( KeyValueData *pkvd )
 
 void CPointCheckpoint::Touch(CBaseEntity *pOther)
 {
-    if (!pOther || !pOther->IsPlayer())
+    if (!pOther || !pOther->IsPlayer() || m_bActivated)
         return;
 
     CBaseEntity *pEntity = NULL;
@@ -112,7 +118,7 @@ void CPointCheckpoint::Touch(CBaseEntity *pOther)
     {
         UTIL_SetOrigin(pEntity, m_vecOrigin);
     }
-
+    m_bActivated = true;
     SetTouch(NULL);
 }
 

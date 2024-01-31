@@ -120,6 +120,31 @@ void CPointCheckpoint::Precache( void )
     PRECACHE_MODEL("models/lambda.mdl");
 }
 
+// These are the new entry points to entities. 
+LINK_ENTITY_TO_CLASS( point_checkpoint, CPointCheckpoint )
+LINK_ENTITY_TO_CLASS( info_player_deathmatch, CBaseDMStart )
+LINK_ENTITY_TO_CLASS( info_player_start, CPointEntity )
+LINK_ENTITY_TO_CLASS( info_landmark, CPointEntity )
+
+void CBaseDMStart::KeyValue( KeyValueData *pkvd )
+{
+	if( FStrEq( pkvd->szKeyName, "master" ) )
+	{
+		pev->netname = ALLOC_STRING( pkvd->szValue );
+		pkvd->fHandled = TRUE;
+	}
+	else
+		CPointEntity::KeyValue( pkvd );
+}
+
+STATE CBaseDMStart::GetState( CBaseEntity *pEntity )
+{
+	if (UTIL_IsMasterTriggered( pev->netname, pEntity ))
+		return STATE_ON;
+	else
+		return STATE_OFF;
+}
+
 // This updates global tables that need to know about entities being removed
 void CBaseEntity::UpdateOnRemove( void )
 {

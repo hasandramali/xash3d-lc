@@ -886,7 +886,7 @@ void GameDLLInit( void )
 }
 
 extern "C"
-{		
+{
 	int IsCoopPlayer(int index)
 	{
 		if( semiclip.value && index >= 1 && index <= gpGlobals->maxClients+1 )

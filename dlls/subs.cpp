@@ -98,13 +98,10 @@ void CPointCheckpoint::KeyValue( KeyValueData *pkvd )
 		UTIL_StringToVector(m_vecOrigin, pkvd->szValue);
 		pkvd->fHandled = TRUE;
 	}
-	else if
+	else if( FStrEq( pkvd->szKeyName, "tpeveryone"))
 	{
-		if( FStrEq( pkvd->szKeyName, "tpeveryone"))
-		{
-			pev->fuser3 = ALLOC_STRING(pkvd->szValue);
-			pkvd->fHandled = TRUE;
-		}
+		pev->fuser3 = ALLOC_STRING(pkvd->szValue);
+		pkvd->fHandled = TRUE;
 	}
 	    
 	else

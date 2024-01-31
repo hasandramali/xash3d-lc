@@ -47,9 +47,6 @@ int PM_Ignore( physent_t *pe )
 }
 #endif
 
-float autojump = 1.0f;
-cvar_t autojump_cvar = {"mp_autojump", "1", FCVAR_SERVER};
-
 static int pm_shared_initialized = 0;
 
 #ifdef _MSC_VER
@@ -2715,9 +2712,9 @@ void PM_Jump( void )
 		return;		// in air, so no effect
 	}
 
-	if (CVAR_GET_FLOAT(&autojump_cvar) != 1 && (pmove->oldbuttons & IN_JUMP))
+	if ( autojump.value != 1 && (pmove->oldbuttons & IN_JUMP))
 		return;
-	
+
 	// In the air now.
 	pmove->onground = -1;
 

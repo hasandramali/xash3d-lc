@@ -66,7 +66,73 @@ public:
 private:
 };
 
+class CPointCheckpoint : public CPointEntity
+{
+public:
+    void Spawn( void );
+    void KeyValue( KeyValueData *pkvd );
+    void EXPORT Touch(CBaseEntity *pOther);
+
+private:
+    string_t m_strSpawnTarget;
+    Vector m_vecOrigin;
+};
+
+void CPointCheckpoint::Spawn( void )
+{
+    Precache();
+    SET_MODEL(ENT(pev), "models/lambda.mdl");
+    pev->solid = SOLID_NOT;
+    pev->effects |= EF_NODRAW;
+    UTIL_SetSize(pev, Vector(-10, -10, -10), Vector(10, 10, 10));
+
+    SetTouch(NULL);
+}
+
+void CPointCheckpoint::KeyValue( KeyValueData *pkvd )
+{
+    if (FStrEq(pkvd->szKeyName, "spawntarget"))
+    {
+        m_strSpawnTarget = ALLOC_STRING(pkvd->szValue);
+        pkvd->fHandled = TRUE;
+    }
+    else if (FStrEq(pkvd->szKeyName, "setorigin"))
+    {
+        UTIL_StringToVector(m_vecOrigin, pkvd->szValue);
+        pkvd->fHandled = TRUE;
+    }
+    else
+    {
+        CPointEntity::KeyValue(pkvd);
+    }
+}
+
+void CPointCheckpoint::Touch(CBaseEntity *pOther)
+{
+    if (!pOther || !pOther->IsPlayer())
+        return;
+
+    CBaseEntity *pTarget = UTIL_FindEntityByTargetname(NULL, STRING(m_strSpawnTarget));
+    if (!pTarget)
+        return;
+
+    if (pTarget->IsPlayer())
+    {
+        UTIL_SetOrigin(pTarget, m_vecOrigin);
+        SET_VIEW(pTarget, pTarget);
+    }
+    pTarget->Touch(pOther);
+
+    SetTouch(NULL);
+}
+
+void CPointCheckpoint::Precache( void )
+{
+    PRECACHE_MODEL("models/lambda.mdl");
+}
+
 // These are the new entry points to entities. 
+LINK_ENTITY_TO_CLASS( point_checkpoint, CPointCheckpoint )
 LINK_ENTITY_TO_CLASS( info_player_deathmatch, CBaseDMStart )
 LINK_ENTITY_TO_CLASS( info_player_start, CPointEntity )
 LINK_ENTITY_TO_CLASS( info_landmark, CPointEntity )

@@ -60,8 +60,6 @@ extern int g_teamplay;
 extern cvar_t bhopcap;
 extern "C" int g_bhopcap;
 
-#define WAIT_TIME 0.3
-
 float m_flUnstuckCooldown = 0;
 
 struct PlayerPositionData

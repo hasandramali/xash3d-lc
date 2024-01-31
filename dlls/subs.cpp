@@ -76,9 +76,7 @@ public:
 
 private:
     Vector m_vecOrigin;
-    bool m_bActivated;
 };
-
 
 void CPointCheckpoint::Spawn( void )
 {
@@ -86,13 +84,9 @@ void CPointCheckpoint::Spawn( void )
     SET_MODEL(ENT(pev), "models/lambda.mdl");
     pev->solid = SOLID_NOT;
     pev->effects &= ~EF_NODRAW;
-    pev->rendermode = kRenderTransAdd;
-    pev->renderamt = 100;
     UTIL_SetSize(pev, Vector(-10, -10, -10), Vector(10, 10, 10));
 
     SetTouch(&CPointCheckpoint::Touch);
-
-    m_bActivated = false;
 }
 
 void CPointCheckpoint::KeyValue( KeyValueData *pkvd )
@@ -110,46 +104,20 @@ void CPointCheckpoint::KeyValue( KeyValueData *pkvd )
 
 void CPointCheckpoint::Touch(CBaseEntity *pOther)
 {
-    if (!pOther || !pOther->IsPlayer() || m_bActivated)
+    if (!pOther || !pOther->IsPlayer())
         return;
 
     CBaseEntity *pEntity = NULL;
     while ((pEntity = UTIL_FindEntityByClassname(pEntity, "info_player_start")) != NULL)
     {
-        UTIL_SetOrigin(pEntity, m_vecOrigin);
+        pEntity->pev->origin = m_vecOrigin;
     }
-    m_bActivated = true;
-    SetTouch(NULL);
+    UTIL_Remove(this);
 }
 
 void CPointCheckpoint::Precache( void )
 {
     PRECACHE_MODEL("models/lambda.mdl");
-}
-
-// These are the new entry points to entities. 
-LINK_ENTITY_TO_CLASS( point_checkpoint, CPointCheckpoint )
-LINK_ENTITY_TO_CLASS( info_player_deathmatch, CBaseDMStart )
-LINK_ENTITY_TO_CLASS( info_player_start, CPointEntity )
-LINK_ENTITY_TO_CLASS( info_landmark, CPointEntity )
-
-void CBaseDMStart::KeyValue( KeyValueData *pkvd )
-{
-	if( FStrEq( pkvd->szKeyName, "master" ) )
-	{
-		pev->netname = ALLOC_STRING( pkvd->szValue );
-		pkvd->fHandled = TRUE;
-	}
-	else
-		CPointEntity::KeyValue( pkvd );
-}
-
-STATE CBaseDMStart::GetState( CBaseEntity *pEntity )
-{
-	if (UTIL_IsMasterTriggered( pev->netname, pEntity ))
-		return STATE_ON;
-	else
-		return STATE_OFF;
 }
 
 // This updates global tables that need to know about entities being removed

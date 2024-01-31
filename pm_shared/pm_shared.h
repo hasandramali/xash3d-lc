@@ -29,6 +29,4 @@ char PM_FindTextureType( char *name );
 #define OBS_MAP_FREE			5
 #define OBS_MAP_CHASE			6
 
-extern cvar_t autojump;
-
 #endif//PM_SHARED_H

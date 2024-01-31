@@ -66,6 +66,30 @@ public:
 private:
 };
 
+class CMovableSpawnPoint : public CPointEntity
+{
+public:
+    void Spawn( void );
+    void MoveTo(Vector newPos);
+
+private:
+    Vector m_startPos;
+};
+
+void CMovableSpawnPoint::Spawn( void )
+{
+    CPointEntity::Spawn();
+
+    m_startPos = pev->origin;
+}
+
+void CMovableSpawnPoint::MoveTo(Vector newPos)
+{
+    pev->origin = newPos;
+
+    UTIL_SetOrigin(this, newPos);
+}
+
 // These are the new entry points to entities. 
 LINK_ENTITY_TO_CLASS( info_player_deathmatch, CBaseDMStart )
 LINK_ENTITY_TO_CLASS( info_player_start, CPointEntity )

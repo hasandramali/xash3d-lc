@@ -2712,7 +2712,7 @@ void PM_Jump( void )
 		return;		// in air, so no effect
 	}
 
-	#ifndef _WIN32
+	#ifndef _WIN32 || CLIENT_DLL
 	if ( autojump.value != 1 && (pmove->oldbuttons & IN_JUMP))
 		return;
 	#endif

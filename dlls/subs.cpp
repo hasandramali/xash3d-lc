@@ -131,7 +131,7 @@ void CPointCheckpoint::Precache( void )
     PRECACHE_MODEL("models/lambda.mdl");
 }
 
-
+// These are the new entry points to entities. 
 LINK_ENTITY_TO_CLASS( point_checkpoint, CPointCheckpoint )
 LINK_ENTITY_TO_CLASS( info_player_deathmatch, CBaseDMStart )
 LINK_ENTITY_TO_CLASS( info_player_start, CPointEntity )

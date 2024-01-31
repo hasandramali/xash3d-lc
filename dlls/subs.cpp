@@ -121,7 +121,11 @@ void CPointCheckpoint::Touch(CBaseEntity *pOther)
     CBaseEntity *pEntity = NULL;
     while ((pEntity = UTIL_FindEntityByClassname(pEntity, "info_player_start")) != NULL)
     {
-        pEntity->pev->origin = m_vecOrigin;
+        if (m_vecOrigin != g_vecZero) {
+            pEntity->pev->origin = m_vecOrigin;
+        } else {
+            pEntity->pev->origin = pev->origin;
+        }
     }
 
     if (pev->fuser3 == 1)

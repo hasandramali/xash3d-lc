@@ -291,7 +291,7 @@ void CHalfLifeMultiplay::Think( void )
 //=========================================================
 BOOL CHalfLifeMultiplay::IsMultiplayer( void )
 {
-	return FALSE;
+	return TRUE;
 }
 
 //=========================================================

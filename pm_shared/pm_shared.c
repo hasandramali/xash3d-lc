@@ -145,11 +145,6 @@ static char grgchTextureType[CTEXTURESMAX];
 
 int g_onladder = 0;
 
-void GameDLLInit (void)
-{
-	CVAR_REGISTER( &autojump );
-}
-
 void PM_SwapTextures( int i, int j )
 {
 	char chTemp;

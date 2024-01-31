@@ -47,6 +47,7 @@ int PM_Ignore( physent_t *pe )
 }
 #endif
 
+cvar_t autojump = {"mp_autojump", "1", FCVAR_SERVER}
 static int pm_shared_initialized = 0;
 
 #ifdef _MSC_VER

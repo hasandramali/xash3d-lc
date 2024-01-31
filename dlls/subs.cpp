@@ -101,8 +101,10 @@ void CPointCheckpoint::KeyValue( KeyValueData *pkvd )
 	else if
 	{
 		if( FStrEq( pkvd->szKeyName, "tpeveryone"))
+		{
 			pev->fuser3 = ALLOC_STRING(pkvd->szValue);
 			pkvd->fHandled = TRUE;
+		}
 	}
 	    
 	else

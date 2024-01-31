@@ -4095,7 +4095,7 @@ void CTriggerTeleport::TeleportTouch(CBaseEntity *pOther)
 	}
 	else if (pev->fuser2 == 2)
 	{
-		SetTouch(NULL);
+		UTIL_Remove(this);
 		SetThink(&CTriggerTeleport::TeleportAllPlayers);
 		pev->nextthink = gpGlobals->time;
 	}

@@ -588,7 +588,7 @@ void ClientCommand( edict_t *pEntity )
 		if (iPlayerIndex <= 0 || iPlayerIndex > 32)
 			return;
 
-		if (gpGlobals->time - g_PlayerPositions[iPlayerIndex].saveTime < WAIT_TIME)
+		if (gpGlobals->time - g_PlayerPositions[iPlayerIndex].saveTime == 0.1)
 		{
 			ClientPrint(pev, HUD_PRINTNOTIFY, "Wait a moment and try again");
 			return;

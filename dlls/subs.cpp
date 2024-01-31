@@ -75,7 +75,6 @@ public:
     void Precache( void );
 
 private:
-    string_t m_strSpawnTarget;
     Vector m_vecOrigin;
 };
 
@@ -83,8 +82,8 @@ void CPointCheckpoint::Spawn( void )
 {
     Precache();
     SET_MODEL(ENT(pev), "models/lambda.mdl");
-    pev->effects &= ~EF_NODRAW;
-    pev->rendermode = kRenderTransAdd;
+    pev->solid = SOLID_NOT;
+    pev->effects |= EF_NODRAW;
     UTIL_SetSize(pev, Vector(-10, -10, -10), Vector(10, 10, 10));
 
     SetTouch(NULL);
@@ -92,12 +91,7 @@ void CPointCheckpoint::Spawn( void )
 
 void CPointCheckpoint::KeyValue( KeyValueData *pkvd )
 {
-    if (FStrEq(pkvd->szKeyName, "spawntarget"))
-    {
-        m_strSpawnTarget = ALLOC_STRING(pkvd->szValue);
-        pkvd->fHandled = TRUE;
-    }
-    else if (FStrEq(pkvd->szKeyName, "setorigin"))
+    if (FStrEq(pkvd->szKeyName, "setorigin"))
     {
         UTIL_StringToVector(m_vecOrigin, pkvd->szValue);
         pkvd->fHandled = TRUE;
@@ -113,13 +107,12 @@ void CPointCheckpoint::Touch(CBaseEntity *pOther)
     if (!pOther || !pOther->IsPlayer())
         return;
 
-    CBaseEntity *pTarget = UTIL_FindEntityByTargetname(NULL, STRING(m_strSpawnTarget));
-    if (!pTarget || !FClassnameIs(pTarget->pev, "info_player_start"))
-        return;
-	
-    UTIL_SetOrigin(pTarget, m_vecOrigin);
+    CBaseEntity *pEntity = NULL;
+    while ((pEntity = UTIL_FindEntityByClassname(pEntity, "info_player_start")) != NULL)
+    {
+        UTIL_SetOrigin(pEntity, m_vecOrigin);
+    }
 
-    pTarget->Touch(pOther);
     SetTouch(NULL);
 }
 

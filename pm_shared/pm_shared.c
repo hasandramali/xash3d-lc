@@ -2712,8 +2712,10 @@ void PM_Jump( void )
 		return;		// in air, so no effect
 	}
 
-	if (cvar_mp_autojump != 1 && (pmove->oldbuttons & IN_JUMP))
+	#ifndef _WIN32
+	if ( autojump.value != 1 && (pmove->oldbuttons & IN_JUMP))
 		return;
+	#endif
 
 	// In the air now.
 	pmove->onground = -1;

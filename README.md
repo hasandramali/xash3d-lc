@@ -13,7 +13,7 @@
 - [x] Unstuck
 - [x] Map Prefix (mapname.cfg)
 - [x] Medkit
-- [ ] Checkpoint system
+- [x] Checkpoint system
 - [ ] Opposing Force Weapons And NPC's
 - [ ] Fixing Many Bugs
 

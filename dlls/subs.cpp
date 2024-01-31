@@ -72,6 +72,7 @@ public:
     void Spawn( void );
     void KeyValue( KeyValueData *pkvd );
     void EXPORT Touch(CBaseEntity *pOther);
+    void Precache( void );
 
 private:
     string_t m_strSpawnTarget;
@@ -119,10 +120,9 @@ void CPointCheckpoint::Touch(CBaseEntity *pOther)
     if (pTarget->IsPlayer())
     {
         UTIL_SetOrigin(pTarget, m_vecOrigin);
-        SET_VIEW(pTarget, pTarget);
+        SET_VIEW(pTarget->edict(), pTarget->edict());
     }
     pTarget->Touch(pOther);
-
     SetTouch(NULL);
 }
 
@@ -131,7 +131,7 @@ void CPointCheckpoint::Precache( void )
     PRECACHE_MODEL("models/lambda.mdl");
 }
 
-// These are the new entry points to entities. 
+
 LINK_ENTITY_TO_CLASS( point_checkpoint, CPointCheckpoint )
 LINK_ENTITY_TO_CLASS( info_player_deathmatch, CBaseDMStart )
 LINK_ENTITY_TO_CLASS( info_player_start, CPointEntity )

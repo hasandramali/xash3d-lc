@@ -474,7 +474,6 @@ void GameDLLInit( void )
 	CVAR_REGISTER( &fraglimit );
 	CVAR_REGISTER( &timelimit );
 	CVAR_REGISTER( &semiclip );
-	CVAR_REGISTER( &autojump );
 
 	CVAR_REGISTER( &fragsleft );
 	CVAR_REGISTER( &timeleft );

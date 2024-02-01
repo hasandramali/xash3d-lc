@@ -45,7 +45,7 @@ BOOL CHalfLifeRules::IsMultiplayer( void )
 //=========================================================
 BOOL CHalfLifeRules::IsDeathmatch( void )
 {
-	return FALSE;
+	return TRUE;
 }
 
 //=========================================================

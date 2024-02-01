@@ -337,7 +337,7 @@ CGameRules *InstallGameRules( void )
 			g_teamplay = 1;
 			return new CHalfLifeTeamplay;
 		}
-		if( (int)gpGlobals->deathmatch == 0 )
+		if( (int)gpGlobals->deathmatch == 1 )
 		{
 			// vanilla deathmatch
 			g_teamplay = 1;

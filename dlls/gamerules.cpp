@@ -327,7 +327,7 @@ CGameRules *InstallGameRules( void )
 	{
 		// generic half-life
 		g_teamplay = 0;
-		return new CHalfLifeRules;
+		return new CHalfLifeMultiplay;
 	}
 	else
 	{

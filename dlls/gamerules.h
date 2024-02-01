@@ -19,7 +19,7 @@
 #ifndef GAMERULES_H
 #define GAMERULES_H
 //LRC
-#define GAME_NAME "Spirit of Half-Life"
+#define GAME_NAME "Half-Life: Legacy Co-op"
 //#include "weapons.h"
 //#include "items.h"
 class CBasePlayerItem;

@@ -8,7 +8,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        cmake_version: [3.13.1]
+        cmake_version: [3.28.0-rc5]
 
     steps:
       - name: Checkout repository

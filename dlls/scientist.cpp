@@ -1029,7 +1029,7 @@ MONSTERSTATE CScientist::GetIdealState( void )
 		{
 			// Stop following if you take damage
 			if( IsFollowing() )
-				StopFollowing( TRUE );
+				StopFollowing( FALSE );
 		}
 		break;
 	case MONSTERSTATE_COMBAT:

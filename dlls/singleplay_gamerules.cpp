@@ -38,7 +38,7 @@ extern DLL_GLOBAL BOOL		g_fGameOver;
 //=========================================================
 BOOL CHalfLifeRules::IsMultiplayer( void )
 {
-	return FALSE;
+	return TRUE;
 }
 
 //=========================================================

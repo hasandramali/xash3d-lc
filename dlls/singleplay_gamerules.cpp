@@ -38,14 +38,14 @@ extern DLL_GLOBAL BOOL		g_fGameOver;
 //=========================================================
 BOOL CHalfLifeRules::IsMultiplayer( void )
 {
-	return TRUE;
+	return FALSE;
 }
 
 //=========================================================
 //=========================================================
 BOOL CHalfLifeRules::IsDeathmatch( void )
 {
-	return TRUE;
+	return FALSE;
 }
 
 //=========================================================

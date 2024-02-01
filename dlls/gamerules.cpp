@@ -323,32 +323,31 @@ CGameRules *InstallGameRules( void )
 	SERVER_COMMAND( UTIL_VarArgs( "exec maps/%s.cfg\n", STRING( gpGlobals->mapname ) ) );
 	SERVER_EXECUTE();
 
-	if ( !gpGlobals->deathmatch )
+	if( !gpGlobals->deathmatch )
 	{
 		// generic half-life
-		g_teamplay = 0;
-		return new CHalfLifeMultiplay;
+		g_teamplay = 1;
+		return new CHalfLifeTeamplay;
 	}
 	else
 	{
-		if ( teamplay.value > 0 )
+		if( teamplay.value > 0 )
 		{
 			// teamplay
-
 			g_teamplay = 1;
 			return new CHalfLifeTeamplay;
 		}
-		if ((int)gpGlobals->deathmatch == 1)
+		if( (int)gpGlobals->deathmatch == 0 )
 		{
 			// vanilla deathmatch
-			g_teamplay = 0;
-			return new CHalfLifeMultiplay;
+			g_teamplay = 1;
+			return new CHalfLifeTeamplay;
 		}
 		else
 		{
 			// vanilla deathmatch??
-			g_teamplay = 0;
-			return new CHalfLifeMultiplay;
+			g_teamplay = 1;
+			return new CHalfLifeTeamplay;
 		}
 	}
 }

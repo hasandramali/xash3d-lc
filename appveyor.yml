@@ -1,0 +1,33 @@
+version: 1.0.{build}
+
+pull_requests:
+  do_not_increment_build_number: true
+
+skip_tags: true
+
+platform:
+  - x86
+
+environment:
+  matrix:
+    - image: Visual Studio 2015
+      GENERATOR_NAME: "Visual Studio 14 2015"
+
+clone_folder: c:\projects\xash\xash3d-lc
+
+build:
+  project: INSTALL.vcxproj
+  verbosity: normal
+  parallel: true
+
+configuration:
+  - Release
+
+before_build:
+  - git submodule update --init --recursive
+  - cmake -G "%GENERATOR_NAME%" c:\projects\xash\xash3d-lc
+
+after_build:
+  # Create archive
+  - 7z a -t7z xash3d-lc-%CONFIGURATION%.7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on c:\projects\xash\xash3d-lc\%CONFIGURATION%
+  - appveyor PushArtifact xash3d-lc-%CONFIGURATION%.7z

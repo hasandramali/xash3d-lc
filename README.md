@@ -20,4 +20,7 @@
 
 ### Downloads
 
-[Download For Android](https://github.com/hasandramali/xash3d-schl/releases/tag/1.0/xash3d-schl.zip)
+[Download For Windows/Linux](https://github.com/hasandramali/xash3d-schl/releases/tag/1.0/xash3d-schl.zip)
+
+
+To install on Android, go to the [releases](https://github.com/hasandramali/xash3d-schl/releases) page.

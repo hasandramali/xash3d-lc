@@ -29,5 +29,5 @@ before_build:
 
 after_build:
   # Create archive
-  - 7z a -t7z xash3d-lc-%CONFIGURATION%.7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on c:\projects\xash\xash3d-lc\%CONFIGURATION%
+  - 7z a -t7z xash3d-lc-%CONFIGURATION%.7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -ms=on c:\projects\xash\xash3d-lc
   - appveyor PushArtifact xash3d-lc-%CONFIGURATION%.7z

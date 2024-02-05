@@ -3,7 +3,7 @@
 *Xash3D based story mod but CO-OP.*
 
 ![](https://img.shields.io/github/issues/hasandramali/xash3d-schl) ![](https://img.shields.io/github/forks/hasandramali/xash3d-schl) ![](https://img.shields.io/github/stars/hasandramali/xash3d-schl) ![](https://img.shields.io/github/license/hasandramali/xash3d-schl) 
-![Windows Build Status](https://ci.appveyor.com/project/hasandramali/xash3d-lc)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/hasandramali/xash3d-lc?svg=true)](https://ci.appveyor.com/project/hasandramali/xash3d-lc)
 
 ### Goals
 - [x] Disable Angry NPC's

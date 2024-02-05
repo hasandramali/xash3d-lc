@@ -24,3 +24,6 @@
 
 
 To install on Android, go to the [releases](https://github.com/hasandramali/xash3d-schl/releases) page.
+
+### NOTE:
+The [Xash3D](https://github.com/hasandramali/xash3d) FWGS (old engine or modifed) needs to be installed first, if it isn't already.

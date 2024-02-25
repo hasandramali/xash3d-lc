@@ -7,6 +7,8 @@ jobs:
   linux:
    name: Linux-i386
    runs-on: ubuntu-latest
+   container:
+       image: i386/ubuntu:latest
    steps:
    - name: Checkout sources
      uses: actions/checkout@v3

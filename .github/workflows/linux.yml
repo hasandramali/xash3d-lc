@@ -15,8 +15,8 @@ jobs:
           submodules: recursive
    - run: |
            sudo apt update --fix-missing
-           sudo apt upgrade -y
-           sudo apt install -f
+           sudo apt remove containerd
+           sudo apt install containerd.io && sudo apt update
            sudo apt install docker.io -y
            docker pull ubuntu:16.10-i386
 

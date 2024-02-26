@@ -7,9 +7,6 @@ jobs:
   linux:
    name: Linux-i386
    runs-on: ubuntu-latest
-   
-   container:
-       image: i386/ubuntu:18.04
    steps:
    - name: Checkout sources
      uses: actions/checkout@v3
@@ -18,10 +15,16 @@ jobs:
           submodules: recursive
    - run: |
            sudo apt update --fix-missing
-           sudo apt install build-essential cmake make gcc-multilib g++-multilib gcc g++ -y
-           mkdir compiled && cd compiled
-           cmake ..
-           make
+           sudo apt install docker.io
+           docker pull ubuntu:16.10-i386
+
+   - name: Docker Work
+     run: |
+         docker run -it --rm \
+          -v $PWD:/app \
+          ubuntu:16.10-i386 \
+          bash -c "apt update && apt install build-essential cmake make gcc g++ -y && mkdir compiled && cd compiled && cmake .. && make"
+
    - name: Upload artifacts
      uses: actions/upload-artifact@v3
      with:

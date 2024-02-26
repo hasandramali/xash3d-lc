@@ -23,7 +23,7 @@ jobs:
    - name: Docker Work
      run: |
        docker run --rm \
-          -v $PWD:/ \
+          -v /home/runner/work/xash3d-lc/xash3d-lc:/app \
           32bit/ubuntu:16.04 \
           bash -c "apt update && apt install build-essential cmake make gcc g++ -y && mkdir compiled && cd compiled && cmake .. && make"
 

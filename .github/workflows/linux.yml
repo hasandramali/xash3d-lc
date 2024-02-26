@@ -14,7 +14,6 @@ jobs:
           fetch-depth: 0
           submodules: recursive
    - run: |
-           sudo apt update --fix-missing
            sudo apt remove containerd
            sudo apt install containerd.io && sudo apt update
            sudo apt install docker.io -y

@@ -18,13 +18,14 @@ jobs:
            sudo apt purge containerd.io -y
            sudo apt update
            sudo apt install docker.io -y
-           docker pull ubuntu:16.10-i386
-
+           docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+           docker build --build-arg BASE_IMAGE=32bit/buntu:16.04 -t 32bit/ubuntu:16.04 -f Dockerfile.i386 .
+  
    - name: Docker Work
      run: |
          docker run -it --rm \
           -v $PWD:/app \
-          ubuntu:18.04-i386 \
+          32bit/ubuntu:16.04 \
           bash -c "apt update && apt install build-essential cmake make gcc g++ -y && mkdir compiled && cd compiled && cmake .. && make"
 
    - name: Upload artifacts

@@ -14,9 +14,8 @@ jobs:
           fetch-depth: 0
           submodules: recursive
    - run: |
-           sudo apt remove -y containerd
-           sudo apt update
-           sudo apt install docker.io
+           sudo apt update --fix-missing
+           sudo apt install docker.io -y
            docker pull ubuntu:16.10-i386
 
    - name: Docker Work

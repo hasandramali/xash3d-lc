@@ -24,13 +24,13 @@ jobs:
            cd android/jni
            ln -s ../../ ./xschl
            cd ../
-           wget https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip
+           wget -q https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip
            unzip -qq android-ndk-r10e-linux-x86_64.zip
            rm -rf android-ndk-r10e-linux-x86_64.zip
            export ANDROID_NDK_HOME=android-ndk-r10e/
            ./build.sh
    - name: Upload artifacts
-     uses: actions/upload-artifact@v3
+     uses: actions/upload-artifact@v4
      with:
           name: kompiled
           path: android/libs/

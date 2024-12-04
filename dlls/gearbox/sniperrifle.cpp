@@ -12,8 +12,6 @@
 *   without written permission from Valve LLC.
 *
 ****/
-#if !OEM_BUILD && !HLDEMO_BUILD
-
 #include "extdll.h"
 #include "util.h"
 #include "cbase.h"
@@ -73,8 +71,8 @@ int CSniperrifle::GetItemInfo(ItemInfo *p)
 	p->pszAmmo2 = NULL;
 	p->iMaxAmmo2 = -1;
 	p->iMaxClip = 5;
-	p->iSlot = 2;
-	p->iPosition = 2;
+	p->iSlot = 3;
+	p->iPosition = 4;
 	p->iFlags = 0;
 	p->iId = m_iId = WEAPON_SNIPERRIFLE;
 	p->iWeight = 10;
@@ -271,5 +269,3 @@ class CSniperAmmo : public CBasePlayerAmmo
 	}
 };
 LINK_ENTITY_TO_CLASS(ammo_762, CSniperAmmo)
-
-#endif

@@ -76,7 +76,6 @@ set (SVDLL_SOURCES
 	game.cpp
 	gamerules.cpp
 	gargantua.cpp
-	gearbox/sniperrifle.cpp
 	gauss.cpp
 	genericmonster.cpp
 	ggrenade.cpp
@@ -137,6 +136,7 @@ set (SVDLL_SOURCES
 	squadmonster.cpp
 	squeakgrenade.cpp
 	subs.cpp
+	sniperrifle.cpp
 	talkmonster.cpp
 	tempmonster.cpp
 	tentacle.cpp

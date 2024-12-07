@@ -271,6 +271,10 @@ void CGameRules::RefreshSkillData ( void )
 	// Tripmine
 	gSkillData.plrDmgTripmine = GetSkillCvar( "sk_plr_tripmine" );
 
+	// Opfor
+	gSkillData.plrDmg762 = GetSkillCvar( "sk_plr_762_bullet" );
+	gSkillData.monDmg762 = GetSkillCvar( "sk_plr_762_bullet" );
+
 	// MONSTER WEAPONS
 	gSkillData.monDmg12MM = GetSkillCvar( "sk_12mm_bullet" );
 	gSkillData.monDmgMP5 = GetSkillCvar ("sk_9mmAR_bullet" );
@@ -308,10 +312,6 @@ void CGameRules::RefreshSkillData ( void )
 	gSkillData.plrStomach = GetSkillCvar( "sk_player_stomach" );
 	gSkillData.plrLeg = GetSkillCvar( "sk_player_leg" );
 	gSkillData.plrArm = GetSkillCvar( "sk_player_arm" );
-
-	// Opfor Weapons
-	gSkillData.plrDmg762 = GetSkillCvar( "sk_plr_762_bullet" );
-	gSkillData.monDmg762 = GetSkillCvar( "sk_plr_762_bullet" );
 }
 
 //=========================================================

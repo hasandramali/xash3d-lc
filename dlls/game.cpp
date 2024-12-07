@@ -324,7 +324,6 @@ cvar_t	sk_plr_xbow_bolt_monster1 = {"sk_plr_xbow_bolt_monster1","0"};
 cvar_t	sk_plr_xbow_bolt_monster2 = {"sk_plr_xbow_bolt_monster2","0"};
 cvar_t	sk_plr_xbow_bolt_monster3 = {"sk_plr_xbow_bolt_monster3","0"};
 
-
 // RPG
 cvar_t	sk_plr_rpg1 = {"sk_plr_rpg1","0"};
 cvar_t	sk_plr_rpg2 = {"sk_plr_rpg2","0"};
@@ -378,6 +377,7 @@ cvar_t	sk_9mm_bullet1 = {"sk_9mm_bullet1","0"};
 cvar_t	sk_9mm_bullet2 = {"sk_9mm_bullet2","0"};
 cvar_t	sk_9mm_bullet3 = {"sk_9mm_bullet3","0"};
 
+// Opfor
 cvar_t	sk_plr_762_bullet1 = { "sk_plr_762_bullet1", "100" };
 cvar_t	sk_plr_762_bullet2 = { "sk_plr_762_bullet2", "100" };
 cvar_t	sk_plr_762_bullet3 = { "sk_plr_762_bullet3", "100" };

@@ -186,6 +186,7 @@ void CHalfLifeMultiplay::RefreshSkillData( void )
 
 	// Opfor Weapons
 	gSkillData.plrDmg762 = 100;
+	gSkillData.monDmg762 = 100;
 }
 
 // longest the intermission can last, in seconds

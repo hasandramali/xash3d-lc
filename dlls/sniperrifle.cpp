@@ -42,7 +42,7 @@ LINK_ENTITY_TO_CLASS( weapon_sniperrifle, CSniperrifle );
 
 void CSniperrifle::Spawn()
 {
-	pev->classname = MAKE_STRING( "weapon_sniperrifle" ); // hack to allow for old names
+	pev->classname = MAKE_STRING( "weapon_sniperrifle" );
 	Precache();
 	SET_MODEL( ENT( pev ), "models/w_m40a1.mdl" );
 	m_iId = WEAPON_SNIPERRIFLE;
@@ -84,7 +84,7 @@ int CSniperrifle::GetItemInfo( ItemInfo *p )
 	p->iPosition = 4;
 	p->iFlags = 0;
 	p->iId = m_iId = WEAPON_SNIPERRIFLE;
-	p->iWeight = MP5_WEIGHT;
+	p->iWeight = SNIPERRIFLE_WEIGHT;
 
 	return 1;
 }
@@ -124,9 +124,6 @@ void CSniperrifle::Holster( int skiplocal /* = 0 */ )
 
 void CSniperrifle::PrimaryAttack()
 {
-	if ( m_fInSpecialReload )
-		return;
-
 	// don't fire underwater
 	if ( m_pPlayer->pev->waterlevel == 3 )
 	{
@@ -235,7 +232,6 @@ void CSniperrifle::Reload( void )
 	if (m_iClip == 0)
 	{
 		iResult = DefaultReload( 5, SNIPER_RELOAD1, 80.0 / 34 );
-		m_fInSpecialReload = 1;
 		m_flNextPrimaryAttack = UTIL_WeaponTimeBase() + 2.25;
 		m_flTimeWeaponIdle = UTIL_WeaponTimeBase() + 2.25;
 	}
@@ -253,15 +249,6 @@ void CSniperrifle::WeaponIdle( void )
 
 	if ( m_flTimeWeaponIdle > UTIL_WeaponTimeBase() )
 		return;
-	if ( m_fInSpecialReload )
-	{
-		m_fInSpecialReload = 0;
-		SendWeaponAnim( SNIPER_RELOAD2 );
-		m_flNextPrimaryAttack = UTIL_WeaponTimeBase() + 49.0 / 27.0;
-		m_flTimeWeaponIdle = UTIL_WeaponTimeBase() + 49.0 / 27.0;
-	}
-	else
-	{
 
 		int iAnim;
 		if (m_iClip <= 0)
@@ -275,8 +262,7 @@ void CSniperrifle::WeaponIdle( void )
 			m_flTimeWeaponIdle = UTIL_WeaponTimeBase() + 67.5 / 16;
 		}
 
-		SendWeaponAnim( iAnim );
-	}
+	SendWeaponAnim( iAnim );
 
 	m_flTimeWeaponIdle = UTIL_SharedRandomFloat( m_pPlayer->random_seed, 10, 15 ); // how long till we do this again.
 }

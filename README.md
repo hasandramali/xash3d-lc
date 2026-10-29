@@ -1,6 +1,8 @@
 ### Half-Life: Legacy CO-OP <img align="right" width="128" height="128" src="https://github.com/hasandramali/xash3d-lc/assets/96012695/8cf10998-4d6b-4052-b511-2f74e470c027" alt="LC" />
 
-*Xash3D based story mod but CO-OP.*
+NOTE: This project is deprecated i strongly recommend using [SvenClient](https://gitlab.com/hasandramali/resvenclient) instead.
+
+*Xash3D (old engine) based story mod but CO-OP.*
 
 ![](https://img.shields.io/github/issues/hasandramali/xash3d-schl) ![](https://img.shields.io/github/forks/hasandramali/xash3d-schl) ![](https://img.shields.io/github/stars/hasandramali/xash3d-schl) ![](https://img.shields.io/github/license/hasandramali/xash3d-schl) 
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/hasandramali/xash3d-lc?svg=true)](https://ci.appveyor.com/project/hasandramali/xash3d-lc)
@@ -17,6 +19,7 @@
 - [x] Checkpoint system
 - [ ] Opposing Force Weapons And NPC's
 - [ ] Fixing Many Bugs
+- [ ] Update engine
 
 ### Downloads
 
